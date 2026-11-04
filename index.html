@@ -46,13 +46,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,su
 .evidence{padding-top:5px;color:var(--muted);font-size:12px;line-height:1.6}
 .warning{margin-top:12px;font-size:12px;color:#dbbfa3;line-height:1.5}
 #error{min-height:18px;color:#e0a49d;font-size:12px;margin:12px 0 0}
-.about{margin:20px 0 0;border-top:1px solid var(--border)}
-details summary{padding:20px 0;cursor:pointer;font-size:13px;color:var(--muted)}
-details summary:hover{color:var(--text)}
-.details-body{max-width:760px;padding:0 0 22px;font-size:13px;color:var(--muted);line-height:1.7}
-.details-body p{margin:12px 0}
-.datalinks{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:20px}
-.datalinks a{font-size:12px}
+.model-note{margin:22px 0;color:var(--muted);font-size:12px}
 footer{border-top:1px solid var(--border);margin-top:0;padding:22px 0 45px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
 footer p{margin:0}
 footer a{color:var(--muted)}
@@ -97,43 +91,13 @@ footer a{color:var(--muted)}
 <div id="warning"></div>
 </section>
 </main>
-<div class="about">
-<details>
-<summary>How is the price calculated?</summary>
-<div class="details-body">
-<p>We compare publicly advertised <strong>asking prices</strong> of 2D artworks in publicly available Australian gallery catalogues. We select artists whose researched career stage matches yours, adjust each price for artwork area, and take a median price for each artist. We then take the median across artists so one prolific artist doesn't dominate.</p>
-<p>The range shows the middle half of these artist-level comparisons. The size adjustment is an assumption, not a measured market law. Prices are not confirmed transaction amounts; galleries may negotiate discounts. The dataset is a small, nonrepresentative sample, so this result is a starting point rather than an authoritative valuation. The 2020 Floating Goose exhibition price list is retained in the downloadable dataset but excluded from current price estimates because it is historical.</p>
-<p>Career stages are assessed from public biographies using <a href="https://code.visualarts.net.au/payment-rates/how-to-use-payment-standards/creative-career-stages" target="_blank" rel="noopener noreferrer">NAVA's guidelines</a>. Unverified stages are excluded.</p>
-<p id="evidence" class="evidence"></p>
-<p id="gallerySources">Data sources will appear here when loaded.</p>
-<div class="datalinks">
-<a href="data/gallery_floorsheets.csv">Gallery data CSV</a>
-<a href="data/stage_evidence.csv">Career-stage evidence</a>
-<a href="data/sources.csv">Source catalogue links</a>
-<a href="data/research_coverage.csv">Gallery coverage</a>
-</div>
-</div>
-</details>
-</div>
+<p class="model-note">Based on Australian gallery prices, 2020–2026.</p>
 <footer><p>Australian gallery prices · AUD</p><a href="https://github.com/grantaj/how-to-price-art">Source code and methodology</a></footer>
 </div>
 <script>
 (function(){
 'use strict';
 const $=id=>document.getElementById(id);
-const sources={
-G01:{name:'Side Gallery',url:'https://sidegallery.com.au/exhibitions/seeking-finding'},
-G02:{name:'Handmark',url:'https://handmark.com.au/exhibition/affordable-art-exhibition-3/'},
-G03:{name:'BMG Art',url:'https://www.bmgart.com.au/stockroom/'},
-G04:{name:'Arthouse Gallery',url:'https://arthousegallery.com.au/stockroom-highlights/'},
-G05:{name:'Hugo Michell',url:'https://hugomichellgallery.com/collections/types?q=Artwork'},
-G06:{name:'Floating Goose 2020 archive',url:'https://www.floatinggoose.com.au/wp-content/uploads/2020/05/KTLO-Price-List.pdf'},
-G07:{name:'Floating Goose',url:'https://www.floatinggoose.com.au/shop/'},
-G08:{name:'Hill Smith at Mezzanine 55',url:'https://www.hillsmithart.com.au/group-exhibition-mezz55'},
-G09:{name:'Hill Smith',url:'https://www.hillsmithart.com.au/louise-feneley'},
-G10:{name:'Hill Smith',url:'https://www.hillsmithart.com.au/coffee-turps-and-devotion'},
-G11:{name:'Hill Smith',url:'https://www.hillsmithart.com.au/brenton-drechsler'}
-};
 let gallery=[];
 const aud=x=>'A$'+Math.round(x).toLocaleString('en-AU');
 function roundPrice(p){
@@ -177,9 +141,9 @@ function estimate(){
  }
  if(!gallery.length)return;
  const selected=gallery.filter(r=>
-   (stage==='all'?['early','mid','established'].includes(r.stage):r.stage===stage) &&
+   (stage==='all'?true:r.stage===stage) &&
    +r.price_aud>0 && +r.height_cm>0 && +r.width_cm>0 &&
-   r.price_basis==='advertised_asking' && r.artist_key && r.source_id!=='G06'
+   r.price_basis==='advertised_asking' && r.artist_key
  );
  const byArtist=new Map();
  const target=width*height,exponent=.55;
@@ -193,8 +157,6 @@ function estimate(){
   $('price').textContent='—';
   $('range').textContent='No matching gallery records';
   $('summary').textContent='Try a different career stage.';
-  $('evidence').textContent='';
-  $('warning').innerHTML='';
   return;
  }
  const price=roundPrice(median(perArtist));
@@ -202,16 +164,7 @@ function estimate(){
  $('price').textContent=aud(price);
  $('range').textContent=aud(low)+' – '+aud(high);
  $('summary').textContent=width+' × '+height+' cm · '+(stage==='early'?'Early-career':stage==='mid'?'Mid-career':stage==='established'?'Established':'All researched career stages');
- const artistCount=perArtist.length;
- const sourceNames=[...new Set(selected.map(r=>r.source_id))].map(id=>sources[id]?.name||id);
- $('evidence').textContent='Based on '+selected.length+' published asking prices from '+artistCount+' '+(artistCount===1?'artist':'artists')+' across '+sourceNames.join(', ')+'.';
- const warnings=[];
- if(artistCount<5)warnings.push('Small sample: '+artistCount+' artists.');
- const typicalArea=median(selected.map(r=>(+r.height_cm)*(+r.width_cm)));
- if(target>typicalArea*9||target<typicalArea/9)warnings.push('Size outside typical sample.');
- $('warning').innerHTML=warnings.map(x=>'<div class="warning">'+x+'</div>').join('');
- const sourcesUsed=[...new Set(selected.map(r=>r.source_id))].sort();
- $('gallerySources').innerHTML='<strong>Catalogue sources for this estimate:</strong> '+sourcesUsed.map(id=>'<a target="_blank" rel="noopener noreferrer" href="'+sources[id].url+'">'+sources[id].name+'</a>').join(' · ')+'.';
+
 }
 for(const id of ['stage','width','height'])$(id).addEventListener('change',estimate);
 for(const id of ['width','height'])$(id).addEventListener('input',()=>{if($(id).value)estimate()});
@@ -226,7 +179,7 @@ fetch('data/gallery_floorsheets.csv',{cache:'no-cache'}).then(r=>{
 }).catch(err=>{
  $('summary').textContent='Could not load published gallery data.';
  $('error').textContent='The calculator needs data/gallery_floorsheets.csv. Please reload the page.';
- $('evidence').textContent=err.message;
+ console.error('Gallery data failed to load:', err);
 });
 })();
 </script>
