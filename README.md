@@ -10,7 +10,7 @@ No build is necessary; GitHub Pages serves `index.html` from `main`.
 
 ### Main price calculator
 
-For the chosen career stage, select gallery records with researched stage assignments (excluding `unverified`). Convert each observed asking price to the proposed artwork area using
+Use all gallery asking-price records from 2020–2026 that have valid dimensions, prices and an identifiable artist key (including archived 2020 listings). For the selected career stage use records with that classification; the **all stages** option also includes unverified-stage artists with identifiable keys. Convert each price to the proposed artwork area using
 
 ```text
 size_adjusted_price = observed_asking_price * (new_area / observed_area)^0.55
@@ -18,7 +18,7 @@ size_adjusted_price = observed_asking_price * (new_area / observed_area)^0.55
 
 Take the **median size-adjusted price for each artist**, then take the **median across artists**. This gives each artist equal weight even when one has many listed artworks. The displayed price is rounded to a consumer-friendly increment. The displayed range is the 25th–75th percentile of artist-level estimates, not a statistical confidence interval. The size exponent 0.55 is a simplifying assumption; it is *not* a fitted estimate from the sample.
 
-Only advertised gallery asking prices are used on the homepage; the app never treats a sold label as a verified sale amount. As of this snapshot, the **current-price early-career subset has only 4 identifiable artists**, so its recommended price is especially uncertain. The 239 gallery observations are selected examples and not a representative survey. Gallery listings can include commissions, framing and negotiation margins. The result is a starting point to discuss with your gallery, not an authoritative valuation or expected real sale price.
+Only advertised gallery asking prices are used on the homepage; the app never treats a sold label as a verified sale amount. As of this snapshot, the **2020–2026 early-career subset contains 8 identifiable artists**. The 239 gallery observations are selected examples and not a representative survey. Gallery listings can include commissions, framing and negotiation margins. The result is a starting point to discuss with your gallery, not an authoritative valuation or expected real sale price.
 
 
 ## Open, anonymised data
@@ -68,7 +68,7 @@ These rows preserve the distinction between an **advertised price** and a page's
 
 ## Data collection and limitations
 
-The current records are **hand-selected convenience samples**, not exhaustive gallery catalogues, cross-sectional random samples or a representative Australian art market. The 2020 Floating Goose PDF has 26 historical price observations, retained for reproducibility but **excluded from the live calculator**: a six-year-old advertised price should not be treated as a current quote. A Side Gallery sample contains 28 works by **one artist**; repeated artists, gallery selection, the distinct auction resale mechanism and price/medium confounding all matter. A gallery's publicly marked `sold` works do not identify actual transaction values or time at risk. Frame dimensions and work dimensions may differ, and medium classification is intentionally approximate. Mutable stockroom date stamps are snapshot *access dates*, not dates of sale.
+The current records are **hand-selected convenience samples**, not exhaustive gallery catalogues, cross-sectional random samples or a representative Australian art market. The 2020 Floating Goose PDF contributes 26 historical price observations to the calculator along with later gallery prices; these figures are nominal advertised prices and are not adjusted for inflation. A Side Gallery sample contains 28 works by **one artist**; repeated artists, gallery selection, the distinct auction resale mechanism and price/medium confounding all matter. A gallery's publicly marked `sold` works do not identify actual transaction values or time at risk. Frame dimensions and work dimensions may differ, and medium classification is intentionally approximate. Mutable stockroom date stamps are snapshot *access dates*, not dates of sale.
 
 A next version should ingest a dated, full-catalogue primary-market dataset, ideally with actual sold prices, listing durations, buyer enquiries, offer prices, commissions, artist-specific pseudonymous identifiers and unsold exposures. That information would be needed before any defensible sales-demand model could be developed.
 
