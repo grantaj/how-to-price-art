@@ -1,0 +1,6 @@
+venue,source_ids,priced_two_dimensional_rows_added,status,checked_on,reference_url,notes
+Hugo Michell Gallery,G05,8,added,2026-11-04,https://hugomichellgallery.com/collections/types?q=Artwork,Original art shop listings with price and dimensions; no comprehensive exhibition floor sheet located
+Floating Goose Studios,G06+G07,32,added,2026-11-04,https://www.floatinggoose.com.au/shop/,2020 exhibition PDF and newer shop listings; 2020 records excluded from live quote
+FELTspace,none,0,no_suitable_public_price_sheet_found,2026-11-04,https://www.feltspace.org/,Exhibition lists and artist biographies found but no verified public 2D prices and dimensions
+Mezzanine 55,G08+G03,24,added_via_exhibitor,2026-11-04,https://www.hillsmithart.com.au/group-exhibition-mezz55,Venue for Hill Smith 2023 group show; existing BMG stockroom also uses this venue; do not double count
+Hill Smith Art Advisory,G08+G09+G10+G11,83,added,2026-11-04,https://www.hillsmithart.com.au/,Mezzanine 55 group show and Hill Smith priced stockroom and exhibition works
