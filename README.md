@@ -6,9 +6,7 @@
 
 The [main website](https://grantaj.github.io/how-to-price-art/) is an intentionally simple **artwork asking-price guide**. Enter career stage, width, and height to get a suggested Australian gallery asking price and a comparison range. It reads the checked-in gallery price CSV; it does not ask the artist to estimate demand, studio time, or elasticity.
 
-The existing, more technical [Advanced sales optimiser](https://grantaj.github.io/how-to-price-art/advanced.html) remains available separately. That tool searches hypothetical price, quantity and production scenarios and optionally compares auction results. Its demand and capacity parameters are assumptions, not measured predictions.
-
-No build is necessary; GitHub Pages serves `index.html` and `advanced.html` from `main`.
+No build is necessary; GitHub Pages serves `index.html` from `main`.
 
 ### Main price calculator
 
@@ -55,34 +53,11 @@ NAVA's criteria are **qualitative**, not based on age or prices. `stage_confiden
 
 At this snapshot, **93 of 164 rows have a researched career-stage assignment**; the remaining 71 remain `unverified`. Repeated works by a single artist are highly correlated and do not amount to 93 independent artists. The sampled works represent **75 identifiable distinct artist keys** (not 75 independent random draws from the Australian artist population).
 
-## Statistical and economic model
-
-For each candidate square dimension `s`, select the **five observed works with closest log surface area** in the chosen source and stage (or all stages); use their **median advertised/realised price** as `B(s)`. This is a local empirical *price anchor*, not a fitted price-demand relationship.
-
-```text
-P_ref(s) = B(s) * user_price_scale
-
-D ~ Poisson(lambda)
-lambda(s,p) = buyers * market_factor
-            * size_appeal(s) / size_appeal(50)
-            * [p / P_ref(s)]^(-price_elasticity)
-
-expected_sold = E[min(n, D)]
-gross_sales = p * expected_sold
-cash_contribution = gross_sales * (1 - commission) - n * material_cost(s)
-```
-
-The **advanced** optimiser enumerates eight square sizes, price points around their measured anchors and all feasible production quantities, constrained by available artist time.
-
-The advanced model offers three objectives: expected works sold, gross sales, or cash contribution after gallery commission and materials. Labour, tax, storage, framing, shipping, marketing, rent and changing future market value are not counted. It optimises **one single-size product strategy**, not a mixed portfolio.
-
-The catalogue observations **do not** measure exposure, buyer enquiries, conversion, discount rates, price elasticity or sales timelines. Therefore the app leaves `buyers`, `market_factor`, `size_appeal`, `price_elasticity`, costs, commission and the price scale adjustable; none are estimated from the CSV. Outputs are **conditional hypothetical optima**, not claims about measured optimum prices or future sales.
-
 ## Data collection and limitations
 
 The current records are **hand-selected convenience samples**, not exhaustive gallery catalogues, cross-sectional random samples or a representative Australian art market. A Side Gallery sample contains 28 works by **one artist**; repeated artists, gallery selection, the distinct auction resale mechanism and price/medium confounding all matter. A gallery's publicly marked `sold` works do not identify actual transaction values or time at risk. Frame dimensions and work dimensions may differ, and medium classification is intentionally approximate. Mutable stockroom date stamps are snapshot *access dates*, not dates of sale.
 
-A next version should ingest a dated, full-catalogue primary-market dataset, ideally with actual sold prices, listing durations, buyer enquiries, offer prices, commissions, artist-specific pseudonymous identifiers and unsold exposures. Only then could we start estimating demand elasticity rather than merely exploring it.
+A next version should ingest a dated, full-catalogue primary-market dataset, ideally with actual sold prices, listing durations, buyer enquiries, offer prices, commissions, artist-specific pseudonymous identifiers and unsold exposures. That information would be needed before any defensible sales-demand model could be developed.
 
 ## References
 
