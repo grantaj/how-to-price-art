@@ -4,7 +4,24 @@
 
 **[Open the calculator](https://grantaj.github.io/how-to-price-art/)**
 
-An experimental price / size / quantity optimiser using **observed Australian auction realised prices** and **gallery asking prices**. It has no build system; GitHub Pages serves `index.html` from the root of `main`.
+The [main website](https://grantaj.github.io/how-to-price-art/) is an intentionally simple **artwork asking-price guide**. Enter career stage, width, and height to get a suggested Australian gallery asking price and a comparison range. It reads the checked-in gallery price CSV; it does not ask the artist to estimate demand, studio time, or elasticity.
+
+The existing, more technical [Advanced sales optimiser](https://grantaj.github.io/how-to-price-art/advanced.html) remains available separately. That tool searches hypothetical price, quantity and production scenarios and optionally compares auction results. Its demand and capacity parameters are assumptions, not measured predictions.
+
+No build is necessary; GitHub Pages serves `index.html` and `advanced.html` from `main`.
+
+### Main price calculator
+
+For the chosen career stage, select gallery records with researched stage assignments (excluding `unverified`). Convert each observed asking price to the proposed artwork area using
+
+```text
+size_adjusted_price = observed_asking_price * (new_area / observed_area)^0.55
+```
+
+Take the **median size-adjusted price for each artist**, then take the **median across artists**. This gives each artist equal weight even when one has many listed artworks. The displayed price is rounded to a consumer-friendly increment. The displayed range is the 25th–75th percentile of artist-level estimates, not a statistical confidence interval. The size exponent 0.55 is a simplifying assumption; it is *not* a fitted estimate from the sample.
+
+Only advertised gallery asking prices are used on the homepage; the app never treats a sold label as a verified sale amount. As of this snapshot, the early-career subset has just **3 identifiable artists**, so its recommended price is especially uncertain. The 116 gallery observations are selected examples and not a representative survey. Gallery listings can include commissions, framing and negotiation margins. The result is a starting point to discuss with your gallery, not an authoritative valuation or expected real sale price.
+
 
 ## Open, anonymised data
 
@@ -55,9 +72,9 @@ gross_sales = p * expected_sold
 cash_contribution = gross_sales * (1 - commission) - n * material_cost(s)
 ```
 
-The optimiser enumerates eight square sizes, price points around their measured anchors and all feasible production quantities, constrained by available artist time.
+The **advanced** optimiser enumerates eight square sizes, price points around their measured anchors and all feasible production quantities, constrained by available artist time.
 
-Three objectives: expected works sold, gross sales, or cash contribution after gallery commission and materials. Labour, tax, storage, framing, shipping, marketing, rent and changing future market value are not counted. It optimises **one single-size product strategy**, not a mixed portfolio.
+The advanced model offers three objectives: expected works sold, gross sales, or cash contribution after gallery commission and materials. Labour, tax, storage, framing, shipping, marketing, rent and changing future market value are not counted. It optimises **one single-size product strategy**, not a mixed portfolio.
 
 The catalogue observations **do not** measure exposure, buyer enquiries, conversion, discount rates, price elasticity or sales timelines. Therefore the app leaves `buyers`, `market_factor`, `size_appeal`, `price_elasticity`, costs, commission and the price scale adjustable; none are estimated from the CSV. Outputs are **conditional hypothetical optima**, not claims about measured optimum prices or future sales.
 
