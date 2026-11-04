@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#165e50">
-<meta name="description" content="An experimental artwork price, size and quantity optimiser. Explore how demand, career stage, market conditions and studio capacity affect sales.">
+<meta name="description" content="An experimental artwork sales optimiser grounded in sourced auction price and gallery floor sheet records.">
 <title>How to Price Art — The Art of Selling</title>
 <style>
 :root{--ink:#19241e;--muted:#57645e;--green:#165e50;--mint:#e6f1ec;--line:#dce4dd;--paper:#f6f6f2;--white:#fff}
@@ -59,6 +59,7 @@ footer{font-size:12px;color:var(--muted);margin-top:25px;max-width:1000px}
 a{color:var(--green)}
 @media(max-width:820px){.layout{grid-template-columns:1fr}.wrap{padding:22px 15px 50px}.panel{padding:19px}.goals{gap:7px}}
 @media(max-width:470px){.hero{grid-template-columns:1fr}.hero .result{text-align:left}.stats{gap:6px}.stat{padding:10px 8px}.stat strong{font-size:16px}.goals{grid-template-columns:1fr}.goal{min-height:0}.goal strong{display:inline;margin:0 8px}.goal small{display:inline}.barrow{grid-template-columns:65px minmax(0,1fr) 75px;gap:6px}}
+.sourceStats{border-left:3px solid var(--green);padding:10px 12px;background:var(--mint);border-radius:5px;font-size:12px;margin:9px 0 18px}.sourceStats.error{background:#fff0e8;border-color:#b76545;color:#8a422b}details{border-top:1px solid var(--line);margin-top:15px;padding-top:12px}details summary{cursor:pointer;color:var(--green);font-weight:700}.recordTable{max-height:290px;overflow:auto;margin-top:10px}.recordTable table{border-collapse:collapse;width:100%;font-size:11px;text-align:left}.recordTable th,.recordTable td{padding:7px;border-bottom:1px solid var(--line);white-space:nowrap}.recordTable th{position:sticky;top:0;background:var(--white)}.recordTable td:last-child{text-align:right}#evidenceDetails{font-size:12px;color:var(--muted);line-height:1.5}.dataset-warning{background:#fff7e8;border-left:3px solid #a47d35;margin-top:12px;padding:11px;font-size:12px;color:#6a4f22}.sourceLink{font-weight:700;color:var(--green)}
 </style>
 </head>
 <body>
@@ -68,12 +69,30 @@ a{color:var(--green)}
 <h1>The Art of Selling</h1>
 <p>They don't teach you this at art school. How large should you paint, what should you charge, and how many works should you make?</p>
 </header>
-<p class="intro">An artist could make a few large, expensive works or many smaller, more accessible ones. Which approach sells more, and which earns more? This calculator explores how career stage, buyers, market conditions and studio capacity interact. It is a model to question, not a machine that knows what your art is worth.</p>
+<p class="intro">An artist could make a few large, expensive works or many smaller, more accessible ones. Which approach sells more, and which earns more? This calculator starts with published Australian auction results and gallery floor sheets, and researched artist career histories. You control the unmeasured demand assumptions. It is a model to question, not a machine that knows what your art is worth.</p>
 <div class="layout">
 <aside class="panel">
 <h2>Artist &amp; market</h2><p class="sub">Change the assumptions; the recommendations update immediately.</p>
-<div class="field"><label for="stage">Career stage</label><select id="stage"><option value="student">Student / first exhibition</option><option value="emerging" selected>Emerging artist</option><option value="developing">Developing / mid-career</option><option value="established">Established artist</option></select><small>This selects an illustrative benchmark, not a verified market average.</small></div>
-<div class="field"><label for="price50">Benchmark price, 50 × 50 cm <output id="price50Val"></output></label><input type="range" id="price50" min="200" max="12000" step="100" value="1200"><small>Replace this default with prices of genuinely comparable works that actually sell.</small></div>
+
+<div class="field"><label for="evidence">Measured price comparison market</label><select id="evidence">
+<option value="G01">Side Gallery · affordable primary</option>
+<option value="G02" selected>Handmark · mixed primary</option>
+<option value="G03">BMG Art · stockroom</option>
+<option value="G04">Arthouse · high-end stockroom</option>
+<option value="A01">Lawsons RADAR · affordable auction</option>
+<option value="A02">Lawsons Contemporary · mixed auction</option>
+</select><small>Separate segments: gallery <em>asking prices</em> are not auction <em>realised prices</em>.</small></div>
+<div class="field"><label for="stage">Researched artist career stage</label><select id="stage">
+<option value="all" selected>All stages (including unverified)</option>
+<option value="early">Early-career</option>
+<option value="mid">Mid-career</option>
+<option value="established">Established</option>
+<option value="unverified">Unverified only</option>
+</select><small>Biographies are individually researched using NAVA's career-stage guidelines. Some remain unverified.</small></div>
+<div class="field"><label for="priceScale">Your prices relative to comparables <output id="priceScaleVal"></output></label>
+<input type="range" id="priceScale" min="0.5" max="2.5" step="0.05" value="1">
+<small>1.00× means the median observed price of five nearest-sized artworks in this segment. Higher or lower levels are scenario assumptions.</small></div>
+<div id="sourceStats" class="sourceStats" role="status">Loading anonymised sale and gallery records…</div>
 <div class="field"><label for="market">Market conditions</label><select id="market"><option value="0.65">Soft / slower sales</option><option selected value="1">Normal</option><option value="1.5">Strong / active buyers</option></select></div>
 <div class="field"><label for="buyers">Expected annual buyers at benchmark <output id="buyersVal"></output></label><input type="range" id="buyers" min="1" max="50" step="1" value="12"><small>Mean interested purchases per year at the benchmark size and price, with normal conditions and adequate stock.</small></div>
 <div class="field"><label for="favsize">Buyers' preferred size <output id="favsizeVal"></output></label><input type="range" id="favsize" min="25" max="120" step="5" value="65"><small>The model assumes demand weakens for sizes far from this.</small></div>
@@ -94,160 +113,174 @@ a{color:var(--green)}
 </div>
 <div id="result" aria-live="polite"></div>
 <div class="explain">
-<h3>How it works</h3>
-<p>Potential purchases are random: <code>D ~ Poisson(λ)</code>. Price changes demand according to a constant-elasticity curve relative to the benchmark for each size. Size preference and market conditions also change λ.</p>
-<p><code>Expected sales = E[min(works made, D)]</code></p>
-<p><code>Cash contribution = price × expected sales × (1 − commission) − production costs</code></p>
-<p>A size-adjusted benchmark price grows approximately with the artwork's linear dimensions. Materials grow with area; labour hours grow less than linearly with area. We search eight square sizes (20–120 cm), prices from 60% to 230% of each size's benchmark and all feasible quantities given studio capacity.</p>
-<p>This is one product type, one price per work and one annual selling period. It does not model a mixture of sizes, collector loyalty, price signalling, exhibitions, changing career reputation or future resale value. Those would be useful extensions.</p>
+<h3>Where the price numbers come from</h3>
+<p>For each candidate size, we find the <strong>five closest observed works by log area</strong> within the selected market and career stage. Their median price anchors the model. Auction anchors use reported sale results; gallery anchors use advertised asking prices (even when labelled sold).</p>
+<div id="evidenceDetails"></div>
+<details><summary>Inspect the anonymised comparable records</summary><div id="recordsTable" class="recordTable"></div></details>
+<h3>What is still hypothetical</h3>
+<p>Potential purchases follow <code>D ~ Poisson(λ)</code>, where <code>λ = buyers × market strength × size appeal × (price / adjusted price anchor)^(-elasticity)</code>. Expected sales = <code>E[min(works made, D)]</code>.</p>
+<p><code>Cash contribution = price × expected sales × (1 − commission) − production costs</code>.</p>
+<p>The model optimises a single square artwork size for a period. Career stage filters <em>documented observations</em>; it does not set a fictional career-stage markup. Buyer counts and price elasticity cannot be estimated from prices alone.</p>
 </div>
-<div class="note"><strong>Limits:</strong> All starting prices, demand counts, preferences, cost/time formulas and price elasticities are deliberately hypothetical, not inferred from surveys or sales data. Cash contribution excludes your labour cost, tax, framing, shipping, rent, promotion and unsold-inventory storage. The optimum is conditional on assumptions—not pricing advice.</div>
+<div class="note"><strong>Limits:</strong> Published prices anchor the model, but buyers, price sensitivity, preferences, production cost and time assumptions remain hypothetical. Cash contribution excludes your labour cost, tax, framing, shipping, rent, promotion and unsold-inventory storage. The optimum is conditional on assumptions—not pricing advice.</div>
 </main>
 </div>
 <footer>
-<strong>Further reading:</strong>
+<strong>Public data:</strong> <a href="data/gallery_floorsheets.csv">Gallery prices CSV</a> · <a href="data/auction_comparables.csv">Auction results CSV</a> · <a href="data/stage_evidence.csv">Researched stage evidence CSV</a> · <a href="data/sources.csv">Source URLs</a>.<br><strong>Further reading:</strong>
 <a href="https://creativeworkplaces.gov.au/contracts-and-payment/independent-contractors-artists-and-arts-workers/working-out-fees-payment-and" target="_blank" rel="noopener noreferrer">Australian Government guidance on creative pricing</a> ·
 <a href="https://code.visualarts.net.au/selling-and-marketing/commercial-galleries-and-representation/detailed-discussion" target="_blank" rel="noopener noreferrer">NAVA on selling through galleries</a> ·
 <a href="https://code.visualarts.net.au/payment-rates/how-to-use-payment-standards/creative-career-stages" target="_blank" rel="noopener noreferrer">NAVA on career stages</a> ·
 <a href="https://www.artbasel.com/news/the-art-basel-and-ubs-global-art-market-report-2026" target="_blank" rel="noopener noreferrer">Art Basel &amp; UBS 2026 art market report</a>.
-These sources provide context, not the numerical parameters of the model.
+The comparison-price numbers come from the linked observations; demand assumptions do not.
 <p>Free, dependency-free software. Everything is calculated in your browser; nothing is submitted to a server. <a href="https://github.com/grantaj/how-to-price-art">Source code</a>.</p>
 </footer>
 </div>
 <script>
 (function(){
 "use strict";
-const byId = id => document.getElementById(id);
-const sizes = [20,30,40,50,60,75,90,120];
-const stagePrices = {student:600, emerging:1200, developing:2500, established:5500};
-const money = n => 'A$' + Math.round(n).toLocaleString('en-AU');
-const num = n => Number(n).toLocaleString('en-AU',{maximumFractionDigits:1});
-const val = id => Number(byId(id).value);
-let goal = 'cash';
-function appeal(size,preferred) {
-  return Math.exp(-0.5*Math.pow(Math.log(size/preferred)/0.65,2));
+const $=id=>document.getElementById(id);
+const sizes=[20,30,40,50,60,75,90,120];
+const money=n=>'A$'+Math.round(n).toLocaleString('en-AU');
+const num=n=>Number(n).toLocaleString('en-AU',{maximumFractionDigits:1});
+const val=id=>Number($(id).value);
+const srcUrl={
+G01:'https://sidegallery.com.au/exhibitions/seeking-finding',
+G02:'https://handmark.com.au/exhibition/affordable-art-exhibition-3/',
+G03:'https://www.bmgart.com.au/stockroom/',
+G04:'https://arthousegallery.com.au/stockroom-highlights/',
+A01:'https://www.lawsons.com.au/auction-catalog/radar-90-established-emerging-artists_CZCTPEWXHX',
+A02:'https://www.lawsons.com.au/auction-catalog/contemporary-art_XMPBLSVCRX'};
+const names={G01:'Side Gallery (one artist)',G02:'Handmark Affordable Art',G03:'BMG Art Stockroom',G04:'Arthouse Stockroom Highlights',A01:'Lawsons RADAR',A02:'Lawsons Contemporary'};
+const state={records:[],goal:'cash',loaded:false};
+function parseCSV(text){
+ const rows=[];let row=[],field='',quoted=false;
+ for(let i=0;i<text.length;i++){let c=text[i];
+   if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++}else quoted=!quoted;}
+   else if(c===','&&!quoted){row.push(field);field='';}
+   else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;row.push(field);if(row.some(s=>s.trim()))rows.push(row);row=[];field='';}
+   else field+=c;
+ }
+ if(quoted)throw Error('Malformed CSV: unterminated quoted field');
+ row.push(field);if(row.some(s=>s.trim()))rows.push(row);
+ const keys=(rows.shift()||[]).map(x=>x.trim());
+ return rows.map(r=>Object.fromEntries(keys.map((k,i)=>[k,(r[i]||'').trim()])));
 }
-function expectedSold(qty,lambda) {
-  if(qty <= 0) return 0;
-  if(lambda >= 700) return qty;
-  // Exact Poisson expectation; each work sold at most once.
-  let p = Math.exp(-lambda), shortfall = 0;
-  for(let k=0;k<qty;k++){
-    shortfall += (qty-k)*p;
-    p *= lambda/(k+1);
+function grouped(){
+ const set=$('evidence').value,stage=$('stage').value;
+ return state.records.filter(r=>r.source_id===set&&(stage==='all'||r.stage===stage));
+}
+function median(arr){const a=arr.slice().sort((x,y)=>x-y);const m=a.length>>1;return a.length?(a.length%2?a[m]:(a[m-1]+a[m])/2):NaN}
+function anchor(size,records){
+ const eligible=records.filter(r=>Number(r.price_aud)>0).slice();
+ const target=size*size;
+ eligible.sort((a,b)=>Math.abs(Math.log((+a.height_cm)*(+a.width_cm)/target))-Math.abs(Math.log((+b.height_cm)*(+b.width_cm)/target)));
+ const neighbours=eligible.slice(0,Math.min(5,eligible.length));
+ return {price:median(neighbours.map(r=>+r.price_aud)),comparables:neighbours};
+}
+function appeal(size,preferred){return Math.exp(-.5*Math.pow(Math.log(size/preferred)/.65,2))}
+function expectedSold(qty,lambda){
+ if(qty<=0)return 0;if(lambda>=700)return qty;
+ let p=Math.exp(-lambda),shortfall=0;
+ for(let k=0;k<qty;k++){shortfall+=(qty-k)*p;p*=lambda/(k+1);}
+ return Math.max(0,Math.min(qty,qty-shortfall));
+}
+function benchmark(size,cfg){return cfg.anchors[size]*cfg.priceScale}
+function demand(size,price,cfg){return cfg.buyers*cfg.market*appeal(size,cfg.favourite)/appeal(50,cfg.favourite)*Math.pow(price/benchmark(size,cfg),-cfg.elasticity)}
+function hoursPer(size,cfg){return 3+(cfg.hours50-3)*Math.pow(size/50,1.35)}
+function costPer(size,cfg){return 25+(cfg.cost50-25)*Math.pow(size/50,2)}
+function score(item,objective){return objective==='buyers'?item.sold:objective==='gross'?item.gross:item.cash}
+function better(a,b,objective){if(!a)return b;const d=score(b,objective)-score(a,objective);if(d>1e-7)return b;if(Math.abs(d)<=1e-7&&b.cash>a.cash)return b;return a}
+function solve(cfg,objective){
+ const rows=[];
+ for(const size of sizes){
+  if(!Number.isFinite(cfg.anchors[size]))continue;
+  const hours=hoursPer(size,cfg),cost=costPer(size,cfg),capacity=Math.min(120,Math.floor(cfg.hours/hours));
+  if(capacity<1)continue;
+  let best=null;
+  for(let i=0;i<=34;i++){
+   const factor=.6+.05*i;
+   const price=Math.max(10,Math.round(benchmark(size,cfg)*factor/10)*10);
+   const lambda=demand(size,price,cfg);
+   for(let qty=1;qty<=capacity;qty++){
+    const sold=expectedSold(qty,lambda),gross=sold*price;
+    const cash=gross*(1-cfg.commission/100)-qty*cost;
+    best=better(best,{size,price,qty,sold,gross,cash,cost,hours,lambda},objective);
+   }
   }
-  return Math.max(0, Math.min(qty, qty-shortfall));
+  if(best)rows.push(best);
+ }
+ let best=rows.reduce((a,b)=>better(a,b,objective),null);
+ if(objective==='cash'&&best&&best.cash<0)best=null;
+ return {best,rows};
 }
-function benchmark(size,cfg) {
-  return cfg.price50*Math.pow(size/50,1.05);
+function getCfg(records){
+ const anchors={};for(const s of sizes)anchors[s]=anchor(s,records).price;
+ return {anchors,priceScale:val('priceScale'),market:val('market'),buyers:val('buyers'),favourite:val('favsize'),hours:val('hours'),hours50:val('hours50'),cost50:val('cost50'),commission:val('commission'),elasticity:val('elasticity')};
 }
-function demand(size,price,cfg,marketFactor) {
-  const fit=appeal(size,cfg.favourite)/appeal(50,cfg.favourite);
-  return cfg.buyers*marketFactor*fit*Math.pow(price/benchmark(size,cfg),-cfg.elasticity);
-}
-function hoursPer(size,cfg) {
-  return 3+(cfg.hours50-3)*Math.pow(size/50,1.35);
-}
-function costPer(size,cfg) {
-  return 25+(cfg.cost50-25)*Math.pow(size/50,2);
-}
-function score(item,objective) {
-  return objective==='buyers'?item.sold:objective==='gross'?item.gross:item.cash;
-}
-function better(a,b,objective) {
-  if(!a) return b;
-  const gap=score(b,objective)-score(a,objective);
-  if(gap>1e-7) return b;
-  if(Math.abs(gap)<=1e-7 && b.cash>a.cash) return b;
-  return a;
-}
-function solve(cfg,objective) {
-  const rows=[];
-  for(const size of sizes){
-    const hours=hoursPer(size,cfg);
-    const cost=costPer(size,cfg);
-    const capacity=Math.min(120,Math.floor(cfg.hours/hours));
-    if(capacity<1) continue;
-    let best=null;
-    for(let i=0;i<=34;i++){
-      const scale=.60+.05*i;
-      const price=Math.max(50, Math.round(benchmark(size,cfg)*scale/10)*10);
-      const lambda=demand(size,price,cfg,cfg.market);
-      for(let qty=1;qty<=capacity;qty++){
-        const sold=expectedSold(qty,lambda);
-        const gross=sold*price;
-        const cash=gross*(1-cfg.commission/100)-qty*cost;
-        best=better(best,{size,price,qty,sold,gross,cash,cost,hours,lambda},objective);
-      }
-    }
-    rows.push(best);
-  }
-  let best=rows.reduce((a,b)=>better(a,b,objective),null);
-  // Making nothing is rational if all candidate plans lose cash.
-  if(objective==='cash' && best && best.cash<0) best=null;
-  return {rows,best};
-}
-function getCfg(){
-  return {price50:val('price50'),market:val('market'),buyers:val('buyers'),favourite:val('favsize'),hours:val('hours'),hours50:val('hours50'),cost50:val('cost50'),commission:val('commission'),elasticity:val('elasticity')};
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]))}
+function evidence(records){
+ const set=$('evidence').value,stage=$('stage').value;
+ const all=state.records.filter(r=>r.source_id===set);
+ const priced=records.filter(r=>+r.price_aud>0);
+ const stages=records.filter(r=>r.stage!=='unverified').length;
+ const m=median(priced.map(r=>+r.price_aud));
+ const gallery=set[0]==='G';
+ const basis=gallery?'public asking prices, not verified realised sale prices':'reported auction sale results';
+ $('sourceStats').classList.remove('error');
+ $('sourceStats').innerHTML='<strong>'+escapeHTML(names[set])+'</strong><br>'+records.length+' selected records ('+all.length+' total); '+priced.length+' prices; '+stages+' career-stage labels researched.<br><strong>'+basis+'</strong> · sample median '+(Number.isFinite(m)?money(m):'n/a')+'.';
+ const link='<a class="sourceLink" target="_blank" rel="noopener noreferrer" href="'+srcUrl[set]+'">Original public source</a>';
+ $('evidenceDetails').innerHTML='<p>Showing <strong>'+records.length+'</strong> anonymised records, with <strong>'+priced.length+'</strong> price observations. '+link+'. '+(gallery?'“Sold” labels are not transaction prices; the observed figure is the advertised asking price.':'Passed auction lots do not contribute a price.')+'</p><p>Stage assignments are sourced individually in <a href="data/stage_evidence.csv">stage_evidence.csv</a>. Missing stage evidence is not treated as evidence of early career. '+(set==='G01'?'<strong>All observations in this exhibition come from one artist; this is not a market-wide early-career average.</strong>':'Samples are hand-selected and not representative market surveys.')+'</p>';
+ const sort=records.slice().sort((a,b)=>(+a.height_cm)*(+a.width_cm)-(+b.height_cm)*(+b.width_cm));
+ const rows=sort.map(r=>'<tr><td>'+escapeHTML(r.row_id)+'</td><td>'+escapeHTML(r.stage)+'</td><td>'+escapeHTML(r.height_cm)+'×'+escapeHTML(r.width_cm)+'</td><td>'+escapeHTML(r.status)+'</td><td>'+escapeHTML(r.price_basis)+'</td><td>'+(+r.price_aud>0?money(+r.price_aud):'—')+'</td></tr>').join('');
+ $('recordsTable').innerHTML='<table><thead><tr><th>ID</th><th>Stage</th><th>cm</th><th>Status</th><th>Basis</th><th>Price</th></tr></thead><tbody>'+rows+'</tbody></table>';
 }
 function render(){
-  const cfg=getCfg();
-  for(const [id,txt] of Object.entries({
-    price50:money(cfg.price50), buyers:num(cfg.buyers), favsize:cfg.favourite+' cm',
-    hours:num(cfg.hours)+' h', hours50:num(cfg.hours50)+' h',
-    cost50:money(cfg.cost50), commission:cfg.commission+'%', elasticity:num(cfg.elasticity)
-  })) byId(id+'Val').textContent=txt;
-  const solutions={cash:solve(cfg,'cash'),gross:solve(cfg,'gross'),buyers:solve(cfg,'buyers')};
-  byId('cashTop').textContent=solutions.cash.best?money(solutions.cash.best.cash):money(0);
-  byId('grossTop').textContent=solutions.gross.best?money(solutions.gross.best.gross):'—';
-  byId('buyersTop').textContent=solutions.buyers.best?num(solutions.buyers.best.sold):'—';
-  document.querySelectorAll('.goal').forEach(button=>{
-    button.setAttribute('aria-pressed',String(button.dataset.goal===goal));
-  });
-  const solution=solutions[goal], best=solution.best;
-  if(!best){
-    byId('result').innerHTML='<div class="note">Under these assumptions no profitable plan is available within the tested sizes and prices; making no new works has a higher cash contribution (A$0). Try a higher benchmark price, more buyers, fewer costs or a different objective.</div>';
-    return;
-  }
-  const label=goal==='cash'?'cash contribution':goal==='gross'?'gross sales':'works sold';
-  const headline=goal==='buyers'?num(best.sold)+' works':goal==='gross'?money(best.gross):money(best.cash);
-  const max=Math.max(1,...solution.rows.map(x=>Math.abs(score(x,goal))));
-  const bars=solution.rows.map(item=>{
-    const v=score(item,goal);
-    return '<div class="barrow '+(item.size===best.size?'opt ':'')+(v<0?'negative':'')+
-      '" title="'+item.size+' cm; price '+money(item.price)+'; make '+item.qty+'; expected sales '+num(item.sold)+'">'+
-      '<span class="size">'+item.size+' cm</span><div class="track"><div class="fill" style="width:'+
-      Math.max(1,100*Math.abs(v)/max).toFixed(1)+'%"></div></div>'+
-      '<span class="value">'+(goal==='buyers'?num(v):money(v))+'</span></div>';
-  }).join('');
-  function stressed(multiplier){
-    const sold=expectedSold(best.qty,demand(best.size,best.price,cfg,cfg.market*multiplier));
-    return best.price*sold*(1-cfg.commission/100)-best.qty*best.cost;
-  }
-  let markup='<div class="hero"><div><span class="label">Best plan for '+label+'</span>'+
-    '<div class="size">'+best.size+' × '+best.size+' cm</div>'+
-    '<div class="detail">Make <b>'+best.qty+'</b> works, priced at <b>'+money(best.price)+'</b> each</div></div>'+
-    '<div class="result"><strong>'+headline+'</strong><small>Expected '+label+'</small></div></div>'+
-    '<div class="stats">'+
-    '<div class="stat"><strong>'+num(best.sold)+' / '+best.qty+'</strong><span>Expected sold / made</span></div>'+
-    '<div class="stat"><strong>'+money(best.gross)+'</strong><span>Expected sales revenue</span></div>'+
-    '<div class="stat"><strong>'+money(best.cash)+'</strong><span>Cash after commission and materials</span></div></div>'+
-    '<h2>Best result at each size</h2><p class="sub">Each size gets its own optimal price and quantity. The highlighted bar is the global optimum.</p>'+
-    '<div class="bars" role="img" aria-label="Optimised '+label+' for artwork sizes from 20 to 120 centimetres">'+bars+'</div>'+
-    '<div class="note">Hold this plan fixed and vary demand by ±35%: expected cash contribution ranges from <strong>'+
-    money(stressed(.65))+'</strong> to <strong>'+money(stressed(1.35))+
-    '</strong>. This is a sensitivity test, not a statistical confidence interval.</div>';
-  if(goal==='buyers') markup+='<div class="note">Optimising only for the number of works sold often chooses lower prices. It need not maximise income or improve future pricing power.</div>';
-  byId('result').innerHTML=markup;
+ const records=grouped();
+ const cfg=getCfg(records);
+ for(const [id,txt] of Object.entries({
+ priceScale:num(cfg.priceScale)+'×',buyers:num(cfg.buyers),favsize:cfg.favourite+' cm',
+ hours:num(cfg.hours)+' h',hours50:num(cfg.hours50)+' h',cost50:money(cfg.cost50),commission:cfg.commission+'%',elasticity:num(cfg.elasticity)
+ }))$(id+'Val').textContent=txt;
+ evidence(records);
+ if(!records.some(r=>+r.price_aud>0)){
+  $('sourceStats').classList.add('error');
+  $('sourceStats').textContent='No price observations for this source × career-stage combination. Choose a different source or stage; no benchmark will be invented.';
+  for(const g of ['cash','gross','buyers'])$(g+'Top').textContent='—';
+  $('result').innerHTML='<div class="note">No compatible price observations. A stage-specific price can only be calculated when the dataset contains examples from that career stage.</div>';
+  return;
+ }
+ const solutions={cash:solve(cfg,'cash'),gross:solve(cfg,'gross'),buyers:solve(cfg,'buyers')};
+ $('cashTop').textContent=solutions.cash.best?money(solutions.cash.best.cash):money(0);
+ $('grossTop').textContent=solutions.gross.best?money(solutions.gross.best.gross):'—';
+ $('buyersTop').textContent=solutions.buyers.best?num(solutions.buyers.best.sold):'—';
+ document.querySelectorAll('.goal').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.goal===state.goal)));
+ const solution=solutions[state.goal],best=solution.best;
+ if(!best){$('result').innerHTML='<div class="note">None of the tested plans has positive cash contribution under these assumptions.</div>';return}
+ const label=state.goal==='cash'?'cash contribution':state.goal==='gross'?'gross sales':'works sold';
+ const headline=state.goal==='buyers'?num(best.sold)+' works':state.goal==='gross'?money(best.gross):money(best.cash);
+ const max=Math.max(1,...solution.rows.map(x=>Math.abs(score(x,state.goal))));
+ const bars=solution.rows.map(item=>{
+  const v=score(item,state.goal);
+  return '<div class="barrow '+(item.size===best.size?'opt ':'')+(v<0?'negative':'')+'" title="'+item.size+'cm: price '+money(item.price)+'; make '+item.qty+'; expected sales '+num(item.sold)+'"><span class="size">'+item.size+' cm</span><div class="track"><div class="fill" style="width:'+Math.max(1,100*Math.abs(v)/max).toFixed(1)+'%"></div></div><span class="value">'+(state.goal==='buyers'?num(v):money(v))+'</span></div>';
+ }).join('');
+ function stressed(f){const sold=expectedSold(best.qty,demand(best.size,best.price,{...cfg,market:cfg.market*f}));return best.price*sold*(1-cfg.commission/100)-best.qty*best.cost}
+ const local=anchor(best.size,records);
+ const caution=records.filter(r=>r.stage!=='unverified').length<5?'<div class="dataset-warning">Only a few of these observations have researched career stages. The “optimal” recommendation is a scenario, not an empirical prediction for that career level.</div>':'';
+ $('result').innerHTML='<div class="hero"><div><span class="label">Model optimum for '+label+'</span><div class="size">'+best.size+' × '+best.size+' cm</div><div class="detail">Make <b>'+best.qty+'</b> works at <b>'+money(best.price)+'</b> each</div></div><div class="result"><strong>'+headline+'</strong><small>Expected '+label+'</small></div></div>'+
+ '<div class="stats"><div class="stat"><strong>'+num(best.sold)+' / '+best.qty+'</strong><span>Expected sold / made</span></div><div class="stat"><strong>'+money(best.gross)+'</strong><span>Expected gross sales</span></div><div class="stat"><strong>'+money(best.cash)+'</strong><span>Contribution after commission and materials</span></div></div>'+
+ '<h2>Optimised plan at each size</h2><p class="sub">Each candidate size has its own optimised price and quantity; price anchor for '+best.size+'cm = '+money(local.price)+' from '+local.comparables.length+' published comparables.</p><div class="bars">'+bars+'</div>'+
+ '<div class="note">Hold this plan fixed and change demand ±35%: contribution varies from <b>'+money(stressed(.65))+'</b> to <b>'+money(stressed(1.35))+'</b>. This is sensitivity, <em>not</em> a confidence interval.</div>'+caution+
+ (state.goal==='buyers'?'<div class="note">Maximising the number of works sold can favour lower prices and does not guarantee viable income.</div>':'');
 }
-byId('stage').addEventListener('change',e=>{byId('price50').value=stagePrices[e.target.value];render()});
-for(const id of ['price50','market','buyers','favsize','hours','hours50','cost50','commission','elasticity']){
-  byId(id).addEventListener('input',render);
-}
-document.querySelectorAll('.goal').forEach(b=>{
-  b.addEventListener('click',()=>{goal=b.dataset.goal;render()});
+for(const id of ['evidence','stage','market'])$(id).addEventListener('change',render);
+for(const id of ['priceScale','buyers','favsize','hours','hours50','cost50','commission','elasticity'])$(id).addEventListener('input',render);
+document.querySelectorAll('.goal').forEach(b=>b.addEventListener('click',()=>{state.goal=b.dataset.goal;render()}));
+Promise.all(['data/gallery_floorsheets.csv','data/auction_comparables.csv'].map(async url=>{
+ const res=await fetch(url,{cache:'no-cache'});if(!res.ok)throw Error(url+': HTTP '+res.status);return parseCSV(await res.text());
+})).then(arr=>{state.records=arr.flat();state.loaded=true;render();}).catch(e=>{
+ $('sourceStats').textContent='Unable to load comparison data: '+e.message+'. Refresh the page or check the CSV files in GitHub.';
+ $('sourceStats').classList.add('error');$('result').innerHTML='<div class="note">The calculator requires the versioned CSV files from this repository. It cannot calculate a verified price anchor until those files load.</div>';
 });
-render();
 })();
 </script>
 </body>
