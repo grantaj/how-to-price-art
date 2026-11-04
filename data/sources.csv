@@ -1,0 +1,7 @@
+source_id,source_name,channel,market_segment,observed_date,url,price_basis,stage_basis
+A01,Lawsons RADAR Feb 2025,auction_secondary,accessible_auction,2025-02-24,https://www.lawsons.com.au/auction-catalog/radar-90-established-emerging-artists_CZCTPEWXHX,reported_sale,unverified_mixed_career_stages
+A02,Lawsons Contemporary Jan 2026,auction_secondary,mixed_auction,2026-01-12,https://www.lawsons.com.au/auction-catalog/contemporary-art_XMPBLSVCRX,reported_sale,unverified_mixed_career_stages
+G01,Side Gallery Seeking and Finding Oct 2025,gallery_primary_or_stockroom,accessible_primary,2025-10-09,https://sidegallery.com.au/exhibitions/seeking-finding,advertised_asking,early_practice_inferred_from_exhibition_biography
+G02,Handmark Affordable Art Exhibition 2026,gallery_primary_or_stockroom,mixed_primary,2026-11-04,https://handmark.com.au/exhibition/affordable-art-exhibition-3/,advertised_asking,unverified
+G03,BMG Art Stockroom 2026,gallery_primary_or_stockroom,established_stockroom,2026-11-04,https://www.bmgart.com.au/stockroom/,advertised_asking,unverified
+G04,Arthouse Gallery Stockroom Highlights 2026,gallery_primary_or_stockroom,high_end_stockroom,2026-11-04,https://arthousegallery.com.au/stockroom-highlights/,advertised_asking,unverified
