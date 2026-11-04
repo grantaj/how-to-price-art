@@ -1,49 +1,49 @@
-group,lot,artist,medium,height_cm,width_cm,price_aud,status
-RADAR,5002,"Gabrielle Jones","Oil and polymer on canvas",40.5,40.4,475,sold
-RADAR,5003,"Sean Wadey","Acrylic and oil on canvas",36,56.5,300,sold
-RADAR,5004,"Hugh Van Schaick","Ink pencil and acrylic on canvas",66,61,350,sold
-RADAR,5005,"Julian Laffan","Oil gouache and woodcut on ply",34.5,34.5,260,sold
-RADAR,5006,"Mungo Howard","Toner and medium on canvas",162,115,800,sold
-RADAR,5007,"Richard Morris","Enamel on plywood",39,34.5,220,sold
-RADAR,5008,"Maximilian Daniels","Oil on canvas",39.5,30,400,sold
-RADAR,5009,"Shane Drinkwater","Ink and acrylic on canvas",50.5,50.5,850,sold
-RADAR,5010,"Maximilian Daniels","Oil on canvas",39.5,30,,passed
-RADAR,5011,"Shane Drinkwater","Ink and acrylic on canvas",48.5,48.5,900,sold
-RADAR,5012,"Susan Simonini","Acrylic on board",25.5,20,150,sold
-RADAR,5013,"Dean Reilly","Acrylic on canvas",50.5,50.5,,passed
-RADAR,5014,"Dean Reilly","Acrylic on canvas",50.5,50.5,,passed
-RADAR,5015,"Dean Reilly","Acrylic on canvas",50.5,50.5,200,sold
-RADAR,5016,"Greg Clark","Oil on canvas",71,56,750,sold
-RADAR,5017,"Mostyn Bramley-Moore","Oil on linen",54.5,44.5,600,sold
-RADAR,5020,"Sholton Morton","Acrylic on canvas",30.5,30.5,160,sold
-RADAR,5021,"Martin Edge","Acrylic on canvas",61,91.5,700,sold
-RADAR,5023,"Geoff Harvey","Acrylic on canvas",51,40.5,900,sold
-RADAR,5024,"Billy Kenda","Acrylic on linen",20.5,30.5,150,sold
-RADAR,5037,"Gabrielle Jones","Oil and polymer on canvas",45.5,46,260,sold
-RADAR,5038,"Ivan Goodacre","Oil on wood panel",80,60,,passed
-RADAR,5039,"Tim Hutchinson","Oil on canvas",50.5,60.5,450,sold
-RADAR,5041,"Mostyn Bramley-Moore","Oil on linen",46.5,54,350,sold
-RADAR,5042,"Sidney Teodoruk","Acrylic and oil on canvas",56,50,350,sold
-RADAR,5043,"Mostyn Bramley-Moore","Oil on linen",55,46.5,375,sold
-RADAR,5061,"Pete Conroy","Oil on canvas",25.5,20.5,80,sold
-RADAR,5062,"Pete Conroy","Oil on canvas",25.5,20.5,80,sold
-RADAR,5063,"Pete Conroy","Oil on canvas",25.5,20.5,70,sold
-RADAR,5081,"Michael Banks","Oil on canvas",60,60,100,sold
-Contemporary,5001,"Sybil Curtis","Oil on linen",90,120,5750,sold
-Contemporary,5002,"Jasper Knight","Oil on aluminium",120,120,3750,sold
-Contemporary,5003,"Matthew Johnson","Oil on linen",100,200,,passed
-Contemporary,5004,"Reg Mombassa","Oil on board",50,50,17500,sold
-Contemporary,5005,"Sokquon Tran","Oil on linen",48.5,48.5,800,sold
-Contemporary,5006,"Michael John Taylor","Oil on canvas",76,101,1400,sold
-Contemporary,5008,"David Bromley","Acrylic on canvas",100,150,,passed
-Contemporary,5009,"George Tjungurrayi","Acrylic on canvas",98,89,,passed
-Contemporary,5010,"Jasper Knight","Acrylic on board",101,77,,passed
-Contemporary,5011,"Dean Bowen","Oil on board",54,65,,passed
-Contemporary,5012,"Jules Sher","Acrylic and oil on canvas",116,120,1400,sold
-Contemporary,5013,"Sokquon Tran","Oil on canvas",97.5,97.5,,passed
-Contemporary,5014,"Yukultji Napangati","Acrylic on canvas",25,25,,passed
-Contemporary,5016,"Kudditji Kngwarreye","Acrylic on canvas",120.5,93.5,,passed
-Contemporary,5017,"David Bromley","Acrylic on canvas",120,150,,passed
-Contemporary,5018,"Yosi Messiah","Mixed media on canvas",102,102,2000,sold
-Contemporary,5019,"Jasper Knight","Oil on aluminium",60,60,1900,sold
-Contemporary,5020,"Janet Golder Kngwarreye","Acrylic on canvas",191,95,2200,sold
+row_id,source_id,channel,market_segment,stage,height_cm,width_cm,price_aud,price_basis,status,medium,work_type
+A01-001,A01,auction_secondary,accessible_auction,unverified,40.5,40.4,475,reported_sale,reported_sold,oil and polymer on canvas,two_dimensional
+A01-002,A01,auction_secondary,accessible_auction,unverified,36,56.5,300,reported_sale,reported_sold,acrylic and oil on canvas,two_dimensional
+A01-003,A01,auction_secondary,accessible_auction,unverified,66,61,350,reported_sale,reported_sold,ink pencil and acrylic on canvas,two_dimensional
+A01-004,A01,auction_secondary,accessible_auction,unverified,34.5,34.5,260,reported_sale,reported_sold,oil gouache and woodcut on ply,two_dimensional
+A01-005,A01,auction_secondary,accessible_auction,unverified,162,115,800,reported_sale,reported_sold,toner and medium on canvas,two_dimensional
+A01-006,A01,auction_secondary,accessible_auction,unverified,39,34.5,220,reported_sale,reported_sold,enamel on plywood,two_dimensional
+A01-007,A01,auction_secondary,accessible_auction,unverified,39.5,30,400,reported_sale,reported_sold,oil on canvas,two_dimensional
+A01-008,A01,auction_secondary,accessible_auction,unverified,50.5,50.5,850,reported_sale,reported_sold,ink and acrylic on canvas,two_dimensional
+A01-009,A01,auction_secondary,accessible_auction,unverified,39.5,30,,not_sold,passed,oil on canvas,two_dimensional
+A01-010,A01,auction_secondary,accessible_auction,unverified,48.5,48.5,900,reported_sale,reported_sold,ink and acrylic on canvas,two_dimensional
+A01-011,A01,auction_secondary,accessible_auction,unverified,25.5,20,150,reported_sale,reported_sold,acrylic on board,two_dimensional
+A01-012,A01,auction_secondary,accessible_auction,unverified,50.5,50.5,,not_sold,passed,acrylic on canvas,two_dimensional
+A01-013,A01,auction_secondary,accessible_auction,unverified,50.5,50.5,,not_sold,passed,acrylic on canvas,two_dimensional
+A01-014,A01,auction_secondary,accessible_auction,unverified,50.5,50.5,200,reported_sale,reported_sold,acrylic on canvas,two_dimensional
+A01-015,A01,auction_secondary,accessible_auction,unverified,71,56,750,reported_sale,reported_sold,oil on canvas,two_dimensional
+A01-016,A01,auction_secondary,accessible_auction,unverified,54.5,44.5,600,reported_sale,reported_sold,oil on linen,two_dimensional
+A01-017,A01,auction_secondary,accessible_auction,unverified,30.5,30.5,160,reported_sale,reported_sold,acrylic on canvas,two_dimensional
+A01-018,A01,auction_secondary,accessible_auction,unverified,61,91.5,700,reported_sale,reported_sold,acrylic on canvas,two_dimensional
+A01-019,A01,auction_secondary,accessible_auction,unverified,51,40.5,900,reported_sale,reported_sold,acrylic on canvas,two_dimensional
+A01-020,A01,auction_secondary,accessible_auction,unverified,20.5,30.5,150,reported_sale,reported_sold,acrylic on linen,two_dimensional
+A01-021,A01,auction_secondary,accessible_auction,unverified,45.5,46,260,reported_sale,reported_sold,oil and polymer on canvas,two_dimensional
+A01-022,A01,auction_secondary,accessible_auction,unverified,80,60,,not_sold,passed,oil on wood panel,two_dimensional
+A01-023,A01,auction_secondary,accessible_auction,unverified,50.5,60.5,450,reported_sale,reported_sold,oil on canvas,two_dimensional
+A01-024,A01,auction_secondary,accessible_auction,unverified,46.5,54,350,reported_sale,reported_sold,oil on linen,two_dimensional
+A01-025,A01,auction_secondary,accessible_auction,unverified,56,50,350,reported_sale,reported_sold,acrylic and oil on canvas,two_dimensional
+A01-026,A01,auction_secondary,accessible_auction,unverified,55,46.5,375,reported_sale,reported_sold,oil on linen,two_dimensional
+A01-027,A01,auction_secondary,accessible_auction,unverified,25.5,20.5,80,reported_sale,reported_sold,oil on canvas,two_dimensional
+A01-028,A01,auction_secondary,accessible_auction,unverified,25.5,20.5,80,reported_sale,reported_sold,oil on canvas,two_dimensional
+A01-029,A01,auction_secondary,accessible_auction,unverified,25.5,20.5,70,reported_sale,reported_sold,oil on canvas,two_dimensional
+A01-030,A01,auction_secondary,accessible_auction,unverified,60,60,100,reported_sale,reported_sold,oil on canvas,two_dimensional
+A02-001,A02,auction_secondary,mixed_auction,unverified,90,120,5750,reported_sale,reported_sold,oil on linen,two_dimensional
+A02-002,A02,auction_secondary,mixed_auction,unverified,120,120,3750,reported_sale,reported_sold,oil on aluminium,two_dimensional
+A02-003,A02,auction_secondary,mixed_auction,unverified,100,200,,not_sold,passed,oil on linen,two_dimensional
+A02-004,A02,auction_secondary,mixed_auction,unverified,50,50,17500,reported_sale,reported_sold,oil on board,two_dimensional
+A02-005,A02,auction_secondary,mixed_auction,unverified,48.5,48.5,800,reported_sale,reported_sold,oil on linen,two_dimensional
+A02-006,A02,auction_secondary,mixed_auction,unverified,76,101,1400,reported_sale,reported_sold,oil on canvas,two_dimensional
+A02-007,A02,auction_secondary,mixed_auction,unverified,100,150,,not_sold,passed,acrylic on canvas,two_dimensional
+A02-008,A02,auction_secondary,mixed_auction,unverified,98,89,,not_sold,passed,acrylic on canvas,two_dimensional
+A02-009,A02,auction_secondary,mixed_auction,unverified,101,77,,not_sold,passed,acrylic on board,two_dimensional
+A02-010,A02,auction_secondary,mixed_auction,unverified,54,65,,not_sold,passed,oil on board,two_dimensional
+A02-011,A02,auction_secondary,mixed_auction,unverified,116,120,1400,reported_sale,reported_sold,acrylic and oil on canvas,two_dimensional
+A02-012,A02,auction_secondary,mixed_auction,unverified,97.5,97.5,,not_sold,passed,oil on canvas,two_dimensional
+A02-013,A02,auction_secondary,mixed_auction,unverified,25,25,,not_sold,passed,acrylic on canvas,two_dimensional
+A02-014,A02,auction_secondary,mixed_auction,unverified,120.5,93.5,,not_sold,passed,acrylic on canvas,two_dimensional
+A02-015,A02,auction_secondary,mixed_auction,unverified,120,150,,not_sold,passed,acrylic on canvas,two_dimensional
+A02-016,A02,auction_secondary,mixed_auction,unverified,102,102,2000,reported_sale,reported_sold,mixed media on canvas,two_dimensional
+A02-017,A02,auction_secondary,mixed_auction,unverified,60,60,1900,reported_sale,reported_sold,oil on aluminium,two_dimensional
+A02-018,A02,auction_secondary,mixed_auction,unverified,191,95,2200,reported_sale,reported_sold,acrylic on canvas,two_dimensional
