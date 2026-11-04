@@ -17,7 +17,7 @@ Every plotted market anchor is calculated from checked-in CSVs:
 | [`data/stage_evidence.csv`](data/stage_evidence.csv) | Biography source URL, stage and confidence for **93** individually annotated price observations |
 | [`data/sources.csv`](data/sources.csv) | Date, source catalogue, price semantics and source URL for each anonymised group |
 
-The price/size CSVs omit artist names, titles and original lot numbers. Their `row_id` keys link to stage evidence where available. Because publicly available source catalogues and biography URLs are also provided, this is **pseudonymisation, not irreversible anonymisation**: distinctive dimensions and prices can be matched to original listings. Source links are intentionally retained for auditability. No personal or private art sales records are included.
+The price/size CSVs omit artist names, titles and original lot numbers. The `artist_key` column pseudonymously groups repeat observations of the same identified artist across sources; five ambiguous gallery observations have an empty key rather than a guessed identity. Their `row_id` keys link to stage evidence where available. Because publicly available source catalogues and biography URLs are also provided, this is **pseudonymisation, not irreversible anonymisation**: distinctive dimensions and prices can be matched to original listings. Source links are intentionally retained for auditability. No personal or private art sales records are included.
 
 ### Price basis: **do not conflate asking and sale prices**
 
@@ -36,7 +36,7 @@ Career stage is researched from each artist's publicly documented CV, exhibition
 
 NAVA's criteria are **qualitative**, not based on age or prices. `stage_confidence` in the price files and `stage_evidence.csv` record our degree of confidence and links for each row. Stage assignments are **researcher judgments**, not official certifications or a universal rule. For example, an artist having practiced for twenty years does not automatically make them established, and a successful selling exhibition is not proof of the artist's lifetime market status.
 
-At this snapshot, **93 of 164 rows have a researched career-stage assignment**; the remaining 71 remain `unverified`. Repeated works by a single artist are highly correlated and do not amount to 93 independent artists.
+At this snapshot, **93 of 164 rows have a researched career-stage assignment**; the remaining 71 remain `unverified`. Repeated works by a single artist are highly correlated and do not amount to 93 independent artists. The sampled works represent **75 identifiable distinct artist keys** (not 75 independent random draws from the Australian artist population).
 
 ## Statistical and economic model
 
