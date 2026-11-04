@@ -17,13 +17,13 @@ nav{height:80px;border-bottom:1px solid var(--border);display:flex;align-items:c
 .brand{font-size:16px;font-weight:650;letter-spacing:-.02em;text-decoration:none}
 .navlink{font-size:13px;color:var(--muted);text-decoration:none}
 .navlink:hover{text-decoration:underline}
-header{padding:50px 0 34px}
+header{padding:40px 0 25px}
 h1{font-size:clamp(30px,4vw,40px);font-weight:600;line-height:1.2;letter-spacing:-.035em;margin:0 0 13px}
 .lede{color:var(--muted);font-size:15px;max-width:635px;line-height:1.65;margin:0}
 main{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:29px;min-width:0}
 h2{font-size:18px;font-weight:600;letter-spacing:-.02em;margin:0 0 5px}
-.sub{font-size:13px;color:var(--muted);margin:0 0 27px}
+.sub{font-size:13px;color:var(--muted);margin:0 0 15px}
 .field{margin-bottom:21px}
 .field label{display:block;font-size:13px;font-weight:550;margin:0 0 9px}
 .field input,.field select{width:100%;min-height:47px;background:var(--field);border:1px solid #45484d;border-radius:6px;color:var(--text);padding:10px 12px;font:inherit;font-size:15px}
@@ -38,22 +38,22 @@ button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,su
 .eyebrow{color:var(--muted);font-size:13px;font-weight:500}
 .amount{font-size:clamp(47px,6vw,66px);font-weight:600;line-height:1.15;letter-spacing:-.04em;margin:17px 0 10px;font-variant-numeric:tabular-nums}
 .qualifier{color:var(--muted);font-size:13px;margin:0 0 30px;line-height:1.6}
-.range{border-top:1px solid #42454a;padding-top:23px}
+.range{border-top:1px solid #42454a;padding-top:19px}
 .range-label{font-size:13px;color:var(--muted);margin-bottom:6px}
 .range strong{font-size:24px;font-weight:550;letter-spacing:-.02em}
 .range p{font-size:12px;color:var(--muted);line-height:1.6;max-width:330px;margin:11px 0 0}
 .grow{flex:1;min-height:22px}
-.evidence{border-top:1px solid #42454a;padding-top:15px;color:var(--muted);font-size:12px;line-height:1.6}
+.evidence{padding-top:5px;color:var(--muted);font-size:12px;line-height:1.6}
 .warning{margin-top:12px;font-size:12px;color:#dbbfa3;line-height:1.5}
 #error{min-height:18px;color:#e0a49d;font-size:12px;margin:12px 0 0}
-.about{margin:32px 0 0;border-top:1px solid var(--border)}
+.about{margin:20px 0 0;border-top:1px solid var(--border)}
 details summary{padding:20px 0;cursor:pointer;font-size:13px;color:var(--muted)}
 details summary:hover{color:var(--text)}
 .details-body{max-width:760px;padding:0 0 22px;font-size:13px;color:var(--muted);line-height:1.7}
 .details-body p{margin:12px 0}
 .datalinks{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:20px}
 .datalinks a{font-size:12px}
-footer{border-top:1px solid var(--border);margin-top:10px;padding:22px 0 45px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+footer{border-top:1px solid var(--border);margin-top:0;padding:22px 0 45px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
 footer p{margin:0}
 footer a{color:var(--muted)}
 @media(max-width:700px){.container{padding:0 18px}nav{height:70px}header{padding:35px 0 28px}main{grid-template-columns:1fr}.panel{padding:24px}.amount{font-size:clamp(48px,11vw,65px)}}
@@ -65,12 +65,10 @@ footer a{color:var(--muted)}
 <nav><a class="brand" href="./">How to Price Art</a><a class="navlink" href="advanced.html">Advanced calculator</a></nav>
 <header>
 <h1>How much should I charge?</h1>
-<p class="lede">A starting price for your artwork, based on asking prices from Australian galleries.</p>
 </header>
 <main>
 <section class="panel" aria-labelledby="inputsTitle">
 <h2 id="inputsTitle">Your artwork</h2>
-<p class="sub">Enter your career stage and the size of your work.</p>
 <div class="field">
 <label for="stage">Career stage</label>
 <select id="stage">
@@ -79,13 +77,12 @@ footer a{color:var(--muted)}
 <option value="established">Established artist</option>
 <option value="all">Not sure — all career stages</option>
 </select>
-<small>Based on professional history, not age.</small>
 </div>
 <div class="dimensions">
 <div class="field"><label for="width">Width (cm)</label><input id="width" type="number" inputmode="decimal" min="5" max="500" step="0.5" value="50"></div>
 <div class="field"><label for="height">Height (cm)</label><input id="height" type="number" inputmode="decimal" min="5" max="500" step="0.5" value="50"></div>
 </div>
-<button class="go" type="button" id="calculate">Calculate price</button>
+<button class="go" type="button" id="calculate">Calculate</button>
 <p id="error" role="status" aria-live="polite"></p>
 </section>
 <section class="panel result" id="result" aria-label="Price recommendation" aria-live="polite">
@@ -93,12 +90,10 @@ footer a{color:var(--muted)}
 <div class="amount" id="price" aria-label="Suggested price">—</div>
 <p class="qualifier" id="summary">Loading gallery comparisons…</p>
 <div class="range">
-<div class="range-label">Comparable price range</div>
+<div class="range-label">Comparable range</div>
 <strong id="range">—</strong>
-<p>Published gallery asking prices, not verified transactions. This is a guide, not a valuation or guarantee of sale.</p>
 </div>
 <div class="grow"></div>
-<div id="evidence" class="evidence"></div>
 <div id="warning"></div>
 </section>
 </main>
@@ -109,6 +104,7 @@ footer a{color:var(--muted)}
 <p>We compare publicly advertised <strong>asking prices</strong> of 2D artworks in four Australian gallery catalogues. We select artists whose researched career stage matches yours, adjust each price for artwork area, and take a median price for each artist. We then take the median across artists so one prolific artist doesn't dominate.</p>
 <p>The range shows the middle half of these artist-level comparisons. The size adjustment is an assumption, not a measured market law. Prices are not confirmed transaction amounts; galleries may negotiate discounts. The dataset is a small, nonrepresentative sample, so this result is a starting point rather than an authoritative valuation.</p>
 <p>Career stages are assessed from public biographies using <a href="https://code.visualarts.net.au/payment-rates/how-to-use-payment-standards/creative-career-stages" target="_blank" rel="noopener noreferrer">NAVA's guidelines</a>. Unverified stages are excluded. The advanced calculator explores further sales scenarios.</p>
+<p id="evidence" class="evidence"></p>
 <p id="gallerySources">Data sources will appear here when loaded.</p>
 <div class="datalinks">
 <a href="data/gallery_floorsheets.csv">Gallery data CSV</a>
@@ -198,14 +194,14 @@ function estimate(){
  const low=roundPrice(percentile(perArtist,.25)),high=roundPrice(percentile(perArtist,.75));
  $('price').textContent=aud(price);
  $('range').textContent=aud(low)+' – '+aud(high);
- $('summary').textContent=width+' × '+height+' cm · '+(stage==='early'?'Early-career':stage==='mid'?'Mid-career':stage==='established'?'Established':'All researched career stages')+' · Retail gallery price';
+ $('summary').textContent=width+' × '+height+' cm · '+(stage==='early'?'Early-career':stage==='mid'?'Mid-career':stage==='established'?'Established':'All researched career stages');
  const artistCount=perArtist.length;
  const sourceNames=[...new Set(selected.map(r=>r.source_id))].map(id=>sources[id]?.name||id);
  $('evidence').textContent='Based on '+selected.length+' published asking prices from '+artistCount+' '+(artistCount===1?'artist':'artists')+' across '+sourceNames.join(', ')+'.';
  const warnings=[];
- if(artistCount<5)warnings.push('Limited evidence: only '+artistCount+' '+(artistCount===1?'artist':'artists')+' in this career group. This estimate is particularly uncertain.');
+ if(artistCount<5)warnings.push('Small sample: '+artistCount+' artists.');
  const typicalArea=median(selected.map(r=>(+r.height_cm)*(+r.width_cm)));
- if(target>typicalArea*9||target<typicalArea/9)warnings.push('This artwork is much larger or smaller than the typical work in the comparison group; size-adjusted prices are extrapolations.');
+ if(target>typicalArea*9||target<typicalArea/9)warnings.push('Size outside typical sample.');
  $('warning').innerHTML=warnings.map(x=>'<div class="warning">'+x+'</div>').join('');
  const sourcesUsed=[...new Set(selected.map(r=>r.source_id))].sort();
  $('gallerySources').innerHTML='<strong>Catalogue sources for this estimate:</strong> '+sourcesUsed.map(id=>'<a target="_blank" rel="noopener noreferrer" href="'+sources[id].url+'">'+sources[id].name+'</a>').join(' · ')+'.';
