@@ -60,6 +60,46 @@ a{color:var(--green)}
 @media(max-width:820px){.layout{grid-template-columns:1fr}.wrap{padding:22px 15px 50px}.panel{padding:19px}.goals{gap:7px}}
 @media(max-width:470px){.hero{grid-template-columns:1fr}.hero .result{text-align:left}.stats{gap:6px}.stat{padding:10px 8px}.stat strong{font-size:16px}.goals{grid-template-columns:1fr}.goal{min-height:0}.goal strong{display:inline;margin:0 8px}.goal small{display:inline}.barrow{grid-template-columns:65px minmax(0,1fr) 75px;gap:6px}}
 .sourceStats{border-left:3px solid var(--green);padding:10px 12px;background:var(--mint);border-radius:5px;font-size:12px;margin:9px 0 18px}.sourceStats.error{background:#fff0e8;border-color:#b76545;color:#8a422b}details{border-top:1px solid var(--line);margin-top:15px;padding-top:12px}details summary{cursor:pointer;color:var(--green);font-weight:700}.recordTable{max-height:290px;overflow:auto;margin-top:10px}.recordTable table{border-collapse:collapse;width:100%;font-size:11px;text-align:left}.recordTable th,.recordTable td{padding:7px;border-bottom:1px solid var(--line);white-space:nowrap}.recordTable th{position:sticky;top:0;background:var(--white)}.recordTable td:last-child{text-align:right}#evidenceDetails{font-size:12px;color:var(--muted);line-height:1.5}.dataset-warning{background:#fff7e8;border-left:3px solid #a47d35;margin-top:12px;padding:11px;font-size:12px;color:#6a4f22}.sourceLink{font-weight:700;color:var(--green)}
+
+/* Editorial gallery identity shared with the simple calculator. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+:root{--ink:#20201d;--muted:#6b6961;--green:#dc4d32;--mint:#f1ebe2;--line:#cac6bc;--paper:#f4f1e9;--white:#fffefa}
+body{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--ink)}
+.wrap{max-width:1180px}
+header{border-color:var(--ink);padding-bottom:34px}
+.kicker{font-size:10px;letter-spacing:.17em}
+.kicker a{color:var(--ink)!important;text-underline-offset:4px}
+h1{font-family:"Instrument Serif",Georgia,serif;letter-spacing:-.04em;font-size:clamp(55px,8vw,102px);line-height:.99;margin:22px 0}
+header p{color:var(--muted)}
+header p a{color:var(--green)!important}
+.intro{font-size:15px;max-width:800px}
+.panel{box-shadow:none;border-color:var(--line);border-radius:0;padding:25px}
+.panel h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:32px;letter-spacing:0}
+.field label{letter-spacing:.02em}
+.field select,select{border-radius:0;border-color:var(--line)}
+.field input[type=range],input[type=range]{accent-color:var(--green)}
+.goals{gap:8px}
+.goal{border-radius:0;background:var(--white)}
+.goal[aria-pressed=true]{background:#fcebe4;border-color:var(--green)}
+.goal strong{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:28px}
+.hero{background:var(--ink);border-radius:0}
+.hero .size{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(34px,4.5vw,58px)}
+.hero .label{color:#f1b19f}
+.hero .detail,.hero .result small{color:#d4cfc8}
+.hero .result strong{font-family:"Instrument Serif",Georgia,serif;font-size:35px;font-weight:400}
+.stat{border-radius:0}
+.stat strong{font-family:"Instrument Serif",Georgia,serif;font-size:27px;font-weight:400}
+.note{border-radius:0}
+.barrow.opt .fill{background:var(--green)}
+.barrow.opt .size{color:var(--ink)}
+.barrow .fill{background:#b9b4aa}
+.sourceStats{border-color:var(--green);border-radius:0;background:#eee4db}
+.explain{border-color:var(--line)}
+.explain h3{font-size:15px}
+footer{border-top:1px solid var(--ink);padding-top:26px}
+footer a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+@media(max-width:650px){.wrap{padding:22px 14px 50px}.panel{padding:17px}.hero .result strong{font-size:29px}}
 </style>
 </head>
 <body>
