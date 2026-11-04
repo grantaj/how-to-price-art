@@ -52,7 +52,7 @@ Career stage is researched from each artist's publicly documented CV, exhibition
 
 NAVA's criteria are **qualitative**, not based on age or prices. `stage_confidence` in the price files and `stage_evidence.csv` record our degree of confidence and links for each row. Stage assignments are **researcher judgments**, not official certifications or a universal rule. For example, an artist having practiced for twenty years does not automatically make them established, and a successful selling exhibition is not proof of the artist's lifetime market status.
 
-At this snapshot, **193 of 287 rows have a researched career-stage assignment**; the remaining 94 remain `unverified`. Repeated works by a single artist are highly correlated and do not amount to 193 independent artists. The sampled works represent **102 identifiable distinct artist keys** (not 102 independent random draws from the Australian artist population). For the archival 2020 Floating Goose source, stages were assessed relative to career standing at the time of that exhibition rather than retrospectively assigning their present-day stage.
+At this snapshot, **193 of 287 rows have a researched career-stage assignment**; the remaining 94 remain `unverified`. Repeated works by a single artist are highly correlated and do not amount to 193 independent artists. The sampled works represent **101 identifiable distinct artist keys** (not 101 independent random draws from the Australian artist population). For the archival 2020 Floating Goose source, stages were assessed relative to career standing at the time of that exhibition rather than retrospectively assigning their present-day stage.
 
 ## Additional Adelaide gallery research (November 2026)
 
