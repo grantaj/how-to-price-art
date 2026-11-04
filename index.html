@@ -102,7 +102,7 @@ footer a{color:var(--muted)}
 <summary>How is the price calculated?</summary>
 <div class="details-body">
 <p>We compare publicly advertised <strong>asking prices</strong> of 2D artworks in four Australian gallery catalogues. We select artists whose researched career stage matches yours, adjust each price for artwork area, and take a median price for each artist. We then take the median across artists so one prolific artist doesn't dominate.</p>
-<p>The range shows the middle half of these artist-level comparisons. The size adjustment is an assumption, not a measured market law. Prices are not confirmed transaction amounts; galleries may negotiate discounts. The dataset is a small, nonrepresentative sample, so this result is a starting point rather than an authoritative valuation.</p>
+<p>The range shows the middle half of these artist-level comparisons. The size adjustment is an assumption, not a measured market law. Prices are not confirmed transaction amounts; galleries may negotiate discounts. The dataset is a small, nonrepresentative sample, so this result is a starting point rather than an authoritative valuation. The 2020 Floating Goose exhibition price list is retained in the downloadable dataset but excluded from current price estimates because it is historical.</p>
 <p>Career stages are assessed from public biographies using <a href="https://code.visualarts.net.au/payment-rates/how-to-use-payment-standards/creative-career-stages" target="_blank" rel="noopener noreferrer">NAVA's guidelines</a>. Unverified stages are excluded.</p>
 <p id="evidence" class="evidence"></p>
 <p id="gallerySources">Data sources will appear here when loaded.</p>
@@ -110,6 +110,7 @@ footer a{color:var(--muted)}
 <a href="data/gallery_floorsheets.csv">Gallery data CSV</a>
 <a href="data/stage_evidence.csv">Career-stage evidence</a>
 <a href="data/sources.csv">Source catalogue links</a>
+<a href="data/research_coverage.csv">Gallery coverage</a>
 </div>
 </div>
 </details>
@@ -124,7 +125,14 @@ const sources={
 G01:{name:'Side Gallery',url:'https://sidegallery.com.au/exhibitions/seeking-finding'},
 G02:{name:'Handmark',url:'https://handmark.com.au/exhibition/affordable-art-exhibition-3/'},
 G03:{name:'BMG Art',url:'https://www.bmgart.com.au/stockroom/'},
-G04:{name:'Arthouse Gallery',url:'https://arthousegallery.com.au/stockroom-highlights/'}
+G04:{name:'Arthouse Gallery',url:'https://arthousegallery.com.au/stockroom-highlights/'},
+G05:{name:'Hugo Michell',url:'https://hugomichellgallery.com/collections/types?q=Artwork'},
+G06:{name:'Floating Goose 2020 archive',url:'https://www.floatinggoose.com.au/wp-content/uploads/2020/05/KTLO-Price-List.pdf'},
+G07:{name:'Floating Goose',url:'https://www.floatinggoose.com.au/shop/'},
+G08:{name:'Hill Smith at Mezzanine 55',url:'https://www.hillsmithart.com.au/group-exhibition-mezz55'},
+G09:{name:'Hill Smith',url:'https://www.hillsmithart.com.au/louise-feneley'},
+G10:{name:'Hill Smith',url:'https://www.hillsmithart.com.au/coffee-turps-and-devotion'},
+G11:{name:'Hill Smith',url:'https://www.hillsmithart.com.au/brenton-drechsler'}
 };
 let gallery=[];
 const aud=x=>'A$'+Math.round(x).toLocaleString('en-AU');
@@ -171,7 +179,7 @@ function estimate(){
  const selected=gallery.filter(r=>
    (stage==='all'?['early','mid','established'].includes(r.stage):r.stage===stage) &&
    +r.price_aud>0 && +r.height_cm>0 && +r.width_cm>0 &&
-   r.price_basis==='advertised_asking' && r.artist_key
+   r.price_basis==='advertised_asking' && r.artist_key && r.source_id!=='G06'
  );
  const byArtist=new Map();
  const target=width*height,exponent=.55;
