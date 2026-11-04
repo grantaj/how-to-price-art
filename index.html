@@ -3,106 +3,179 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8f7f2">
+<meta name="theme-color" content="#f4f1e9">
 <meta name="description" content="How much should you charge for your artwork? Enter its dimensions and career stage to see an evidence-based guide from published Australian gallery prices.">
-<title>How to Price Art</title>
+<title>How to Price Art — A Guide for Artists</title>
 <style>
-:root{color-scheme:light;--paper:#f8f7f2;--ink:#25322a;--soft:#5b6a60;--line:#dbe0d7;--accent:#215e4b;--lime:#deebe1;--white:#ffffff}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+:root{color-scheme:light;--paper:#f4f1e9;--ink:#20201d;--muted:#6b6961;--stroke:#c5c1b6;--accent:#dc4d32;--accent-hover:#b93621;--dark:#20201d;--cream:#f4f1e9;--serif:"Instrument Serif",Georgia,"Times New Roman",serif;--sans:"DM Sans",system-ui,sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:var(--paper);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.5}
-.wrap{width:min(900px,calc(100% - 36px));margin:auto}
-nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 0 18px;border-bottom:1px solid var(--line)}
-.brand{color:var(--ink);font-weight:750;letter-spacing:-.035em;text-decoration:none;font-size:17px}
-.navlink{color:var(--accent);font-size:13px;font-weight:650;text-decoration:none}
-.navlink:hover,a:hover{text-decoration:underline}
-header{padding:59px 0 34px}
-.kicker{color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
-h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(42px,7.5vw,76px);line-height:1.02;letter-spacing:-.052em;margin:0 0 20px}
-.lede{font-size:18px;line-height:1.55;color:var(--soft);max-width:630px;margin:0}
-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.07fr);gap:18px;align-items:stretch;margin:8px 0 25px}
-.panel{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:27px}
-h2{font-weight:700;letter-spacing:-.025em;font-size:19px;margin:0 0 5px}
-.sub{font-size:13px;color:var(--soft);margin:0 0 24px}
-.field{margin:0 0 21px}
-.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
-.field select,.field input{background:#fff;color:var(--ink);border:1px solid #b9c7bc;border-radius:9px;width:100%;font:inherit;font-size:16px;padding:12px 12px;min-height:49px}
-.field select{cursor:pointer}
-.field input:focus-visible,.field select:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #88c9ac;outline-offset:2px}
-.field small{display:block;font-size:12px;color:var(--soft);margin-top:7px}
-.dimensions{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.go{border:0;background:var(--accent);color:white;font:inherit;font-weight:750;border-radius:10px;padding:14px 15px;width:100%;cursor:pointer}
-.go:hover{background:#154632}
-.result{background:#eaf2ec;border-color:#d6e5d8;display:flex;flex-direction:column;min-height:410px}
-.result .eyebrow{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);font-weight:800}
-.amount{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.055em;font-weight:400;line-height:1.09;font-size:clamp(44px,6.5vw,65px);margin:13px 0 10px;white-space:nowrap}
-.qualifier{color:#506459;font-size:14px;margin:0 0 25px}
-.range{padding-top:22px;border-top:1px solid #cddbd0}
-.range .range-label{color:var(--soft);font-size:12px;margin-bottom:5px}
-.range strong{font-size:22px;font-weight:650;letter-spacing:-.03em}
-.range p{font-size:12px;color:var(--soft);line-height:1.55;margin:10px 0 0}
-.grow{flex:1}
-.evidence{font-size:12px;color:#496051;padding-top:22px}
-.warning{background:#fff9e9;color:#725b34;font-size:12px;padding:11px 12px;border-radius:8px;margin-top:13px}
-#error{font-size:13px;color:#a23f28;margin:9px 0 0}
-.about{border-top:1px solid var(--line);padding:21px 0 10px;margin:28px 0 0}
-details{background:transparent}
-summary{color:var(--accent);font-size:14px;cursor:pointer;font-weight:700;list-style-position:inside}
-.details-body{max-width:745px;padding:10px 0 5px 21px;color:var(--soft);font-size:13px;line-height:1.65}
-.details-body p{margin:11px 0}
-.details-body a,footer a{color:var(--accent)}
-.datalinks{display:flex;flex-wrap:wrap;gap:10px 19px}
-.datalinks a{font-size:13px}
-footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;gap:10px;font-size:12px;color:var(--soft);padding:22px 0 48px}
-footer p{margin:0}
-@media(max-width:690px){main{grid-template-columns:1fr}header{padding:39px 0 24px}.panel{padding:23px}.result{min-height:0}.amount{font-size:54px}.lede{font-size:16px}}
-@media(max-width:370px){.wrap{width:calc(100% - 24px)}.panel{padding:18px}.amount{font-size:46px}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+button,select,input{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 84px));margin:auto}
+.site-nav{min-height:97px;display:flex;align-items:center;justify-content:space-between;gap:26px;border-bottom:1px solid var(--ink)}
+.brand{font-weight:700;text-transform:uppercase;letter-spacing:-.085em;font-size:25px;line-height:.9;text-decoration:none;flex:none;display:flex;flex-direction:column}
+.brand span:nth-child(2){padding-left:27px}
+.nav-caption{margin:auto;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.navlink{font-size:12px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;border-bottom:1px solid var(--ink);padding:10px 0;transition:color .2s,border-color .2s}
+.navlink:hover{color:var(--accent);border-color:var(--accent);text-decoration:none}
+.navlink .arrow{display:inline-block;font-size:19px;line-height:0;vertical-align:-1px;margin-left:13px;transition:transform .2s}
+.navlink:hover .arrow{transform:translate(3px,-3px)}
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.75fr);gap:35px;align-items:end;padding:75px 0 57px;border-bottom:1px solid var(--stroke)}
+.issue{font-size:10px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;margin:0 0 25px;display:flex;gap:15px;align-items:center}
+.issue:before{content:"";width:24px;height:3px;background:var(--accent);display:inline-block}
+h1{font:400 clamp(72px,9vw,137px)/.82 var(--serif);letter-spacing:-.051em;margin:0 0 30px}
+h1 em{font-weight:400;color:var(--accent)}
+.lede{max-width:590px;color:#4b4a45;font-size:16px;line-height:1.65;margin:0}
+.hero-figure{margin:0 0 3px;align-self:end;display:grid;justify-items:end}
+.figure-plate{background:var(--accent);position:relative;width:100%;max-width:302px;aspect-ratio:1/1.15;overflow:hidden}
+.figure-plate:before{content:"";position:absolute;width:67%;height:69%;background:var(--ink);top:15%;left:16%;transform:rotate(-6deg)}
+.figure-plate:after{content:"";position:absolute;width:48%;height:10%;background:var(--paper);top:49%;left:27%;transform:rotate(-6deg)}
+.figure-center{position:absolute;z-index:1;width:11%;aspect-ratio:1;background:var(--paper);left:47%;top:39%;border-radius:50%}
+.figure-caption{display:flex;justify-content:space-between;gap:15px;width:100%;max-width:302px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-top:12px;color:var(--muted)}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;padding:43px 0 38px}
+.form-panel{padding:0 60px 0 0}
+.section-number{display:flex;gap:11px;align-items:center;margin-bottom:23px;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;color:var(--muted)}
+.section-number span{color:var(--accent)}
+h2{font:400 43px/.98 var(--serif);letter-spacing:-.012em;margin:0 0 12px}
+.sub{font-size:13px;color:var(--muted);margin:0 0 31px;line-height:1.5;max-width:385px}
+.field{margin-bottom:26px}
+.field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:10px}
+.field select,.field input{color:var(--ink);width:100%;background:transparent;border:1px solid var(--stroke);border-radius:0;font:500 16px var(--sans);padding:14px 13px;min-height:52px;transition:border-color .18s}
+.field select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"%3E%3Cpath d="m5 7 5 6 5-6" fill="none" stroke="%2320201d" stroke-width="1.5"/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 11px center;background-size:19px;padding-right:37px}
+.field input:hover,.field select:hover{border-color:var(--ink)}
+.field input:focus-visible,.field select:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.field small{display:block;font-size:11px;color:var(--muted);margin-top:9px;line-height:1.5}
+.dimensions{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.go{border:0;border-radius:0;background:var(--ink);color:var(--paper);font-weight:600;font-size:13px;letter-spacing:.035em;text-align:left;padding:18px 20px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:15px;transition:background .18s}
+.go:hover{background:var(--accent)}
+.go .go-arrow{font-size:22px;font-weight:400;line-height:1}
+#error{color:#a02d24;font-size:12px;min-height:16px}
+.result{background:var(--dark);color:var(--cream);padding:38px 40px 35px;display:flex;flex-direction:column;min-height:505px;position:relative;isolation:isolate}
+.result:before{content:"";position:absolute;top:0;right:0;width:60px;height:60px;background:var(--accent);clip-path:polygon(100% 0,0 0,100% 100%);z-index:-1}
+.result .section-number{color:#a9a69e;margin-bottom:37px}
+.result .section-number span{color:#f37c67}
+.result .eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#aaa9a3}
+.amount{font:400 clamp(68px,7.5vw,107px)/.96 var(--serif);letter-spacing:-.048em;margin:8px 0 12px;white-space:nowrap;font-variant-numeric:lining-nums}
+.qualifier{font-size:12px;color:#c2bfb7;line-height:1.6;margin:0 0 35px}
+.range{border-top:1px solid #555550;padding-top:26px}
+.range-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#b9b7af;margin-bottom:8px}
+.range strong{font:400 33px/1.15 var(--serif);letter-spacing:-.012em}
+.range p{font-size:12px;max-width:330px;color:#bdbbb2;line-height:1.6;margin:10px 0 0}
+.grow{flex:1;min-height:22px}
+.evidence{font-size:11px;color:#cac7bf;line-height:1.65;padding-top:20px;border-top:1px solid #555550}
+.warning{margin-top:12px;color:#f1ba9f;font-size:11px;line-height:1.55}
+.about{border-top:1px solid var(--stroke);padding:23px 0 0;margin:8px 0 0}
+details{background:none}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.01em;padding:13px 0 25px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";font-size:21px;font-weight:400;color:var(--accent)}
+details[open] summary:after{content:"−"}
+.details-body{max-width:870px;padding:0 0 29px;color:#58564f;font-size:13px;line-height:1.8}
+.details-body p{margin:12px 0}
+.details-body a{color:var(--ink)}
+.datalinks{display:flex;flex-wrap:wrap;gap:10px 23px;margin-top:21px}
+.datalinks a{font-weight:600;font-size:12px;text-decoration:underline}
+footer{border-top:1px solid var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;gap:18px;font-size:10px;letter-spacing:.085em;text-transform:uppercase;padding:21px 0 44px;margin-top:20px}
+footer p{margin:0;color:var(--muted)}
+footer a{text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px}
+@media(max-width:1030px){
+ .wrap{width:min(100% - 60px,1180px)}
+ h1{font-size:clamp(70px,10vw,117px)}
+ .hero{grid-template-columns:1.3fr .7fr}
+ .form-panel{padding-right:32px}
+ .result{padding:31px}
+ .amount{font-size:clamp(60px,8vw,92px)}
+}
+@media(max-width:720px){
+ .wrap{width:calc(100% - 38px)}
+ .site-nav{min-height:82px}
+ .brand{font-size:21px}
+ .nav-caption{display:none}
+ .hero{padding:44px 0 35px;grid-template-columns:1fr}
+ h1{font-size:clamp(70px,15vw,112px);margin-bottom:24px}
+ .hero-figure{display:none}
+ .lede{font-size:15px}
+ .workspace{grid-template-columns:1fr;gap:35px;padding:31px 0 29px}
+ .form-panel{padding-right:0}
+ h2{font-size:38px}
+ .sub{margin-bottom:23px}
+ .result{min-height:405px;padding:28px}
+ .amount{font-size:clamp(65px,14vw,100px)}
+ .result .section-number{margin-bottom:32px}
+}
+@media(max-width:390px){
+ .wrap{width:calc(100% - 28px)}
+ .site-nav{gap:7px}
+ .navlink{font-size:11px}
+ h1{font-size:67px}
+ .dimensions{gap:10px}
+ .result{padding:23px}
+ .amount{font-size:62px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav><a class="brand" href="./">How to Price Art</a><a class="navlink" href="advanced.html">Advanced calculator <span aria-hidden="true">↗</span></a></nav>
-<header>
-<p class="kicker">A practical starting point</p>
-<h1>What should I charge<br>for my artwork?</h1>
-<p class="lede">Enter your artwork's size and your career stage. We'll compare it with advertised prices of artworks from Australian galleries to suggest a starting asking price.</p>
-</header>
-<main>
-<section class="panel" aria-labelledby="inputsTitle">
-<h2 id="inputsTitle">Your artwork</h2>
-<p class="sub">Just three details. All prices are in Australian dollars.</p>
-<div class="field"><label for="stage">Where are you in your career?</label>
+<nav class="site-nav">
+<a class="brand" href="./" aria-label="How to Price Art homepage"><span>HOW TO</span><span>PRICE ART.</span></a>
+<span class="nav-caption">A FIELD GUIDE TO THE BUSINESS OF ART</span>
+<a class="navlink" href="advanced.html">The research lab <span class="arrow" aria-hidden="true">↗</span></a>
+</nav>
+<header class="hero">
+<div>
+<p class="issue">ISSUE 001 — THE PRICE QUESTION</p>
+<h1>What should<br>you <em>charge?</em></h1>
+<p class="lede">Making the work is one thing. Pricing it is another. Find a starting price for your art using real gallery listings — without the guesswork.</p>
+</div>
+<figure class="hero-figure" aria-hidden="true">
+<div class="figure-plate"><div class="figure-center"></div></div>
+<figcaption class="figure-caption"><span>NO. 01 / PRICE STUDY</span><span>ART &amp; COMMERCE</span></figcaption>
+</figure>
+<</header>
+<main class="workspace">
+<section class="form-panel" aria-labelledby="inputsTitle">
+<div class="section-number"><span>01 /</span> THE WORK</div>
+<h2 id="inputsTitle">Tell us about it.</h2>
+<p class="sub">Three details. A clearer place to start.</p>
+<div class="field"><label for="stage">Your career stage</label>
 <select id="stage">
 <option value="early" selected>Early-career artist</option>
 <option value="mid">Mid-career artist</option>
 <option value="established">Established artist</option>
-<option value="all">Not sure — show all career stages</option>
+<option value="all">Not sure / all career stages</option>
 </select>
-<small>Based on documented exhibitions, awards and professional recognition, not age.</small></div>
+<small>Based on your exhibition and professional history, not your age.</small></div>
 <div class="dimensions">
-<div class="field"><label for="width">Width (cm)</label><input id="width" type="number" inputmode="decimal" min="5" max="500" step="0.5" value="50"></div>
-<div class="field"><label for="height">Height (cm)</label><input id="height" type="number" inputmode="decimal" min="5" max="500" step="0.5" value="50"></div>
+<div class="field"><label for="width">Width / cm</label><input id="width" type="number" inputmode="decimal" min="5" max="500" step="0.5" value="50"></div>
+<div class="field"><label for="height">Height / cm</label><input id="height" type="number" inputmode="decimal" min="5" max="500" step="0.5" value="50"></div>
 </div>
-<button class="go" type="button" id="calculate">Calculate asking price</button>
-<p id="error" aria-live="polite"></p>
+<button class="go" type="button" id="calculate"><span>Find my price</span><span class="go-arrow" aria-hidden="true">↗</span></button>
+<p id="error" role="status" aria-live="polite"></p>
 </section>
-<section class="panel result" id="result" aria-label="Price recommendation" aria-live="polite">
+<section class="result" id="result" aria-label="Price recommendation" aria-live="polite">
+<div class="section-number"><span>02 /</span> THE NUMBER</div>
 <span class="eyebrow">Suggested gallery asking price</span>
 <div class="amount" id="price" aria-label="Suggested price">—</div>
 <p class="qualifier" id="summary">Loading gallery comparisons…</p>
 <div class="range">
-<div class="range-label">Typical range among comparable artists</div>
+<div class="range-label">The comparable price range</div>
 <strong id="range">—</strong>
-<p>Gallery asking prices vary considerably between artists. This is a guide, not a valuation or a guaranteed sale price.</p>
+<p>Based on published asking prices. Not a valuation, sale guarantee or an estimate of your work's intrinsic worth.</p>
 </div>
 <div class="grow"></div>
 <div id="evidence" class="evidence"></div>
 <div id="warning"></div>
 </section>
-</main>
+<</main>
 <div class="about">
 <details>
-<summary>How is this price estimated?</summary>
+<summary>Behind the number — data &amp; methodology</summary>
 <div class="details-body">
 <p>We use the publicly advertised <strong>asking prices</strong> of 2D artworks in four Australian gallery catalogues. We select artists whose researched career stage matches yours. We first adjust each observed price to your artwork's surface area using a modest size-scaling rule, then take a median price for each artist. Finally, we take the median across <em>artists</em> so one artist with many works doesn't dominate the result.</p>
 <p>The range shows the middle half of these artist-level comparisons. The size adjustment is a modelling assumption, not a fitted market law. Prices are <strong>not confirmed transaction amounts</strong>; galleries may give discounts, and their listed prices typically include gallery commissions. The samples are small and deliberately selected, so this result is a rough starting point, not a market-wide statistical estimate.</p>
@@ -117,7 +190,7 @@ footer p{margin:0}
 </div>
 </details>
 </div>
-<footer><p>Public gallery prices · Australian dollars · Runs entirely in your browser</p><a href="https://github.com/grantaj/how-to-price-art">View methodology and code</a></footer>
+<footer><p>INDEPENDENT PRICE RESEARCH / AUSTRALIA / 2026</p><a href="https://github.com/grantaj/how-to-price-art">OPEN DATA &amp; SOURCE CODE ↗</a></footer>
 </div>
 <script>
 (function(){
