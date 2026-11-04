@@ -1,0 +1,117 @@
+row_id,source_id,channel,market_segment,stage,height_cm,width_cm,price_aud,price_basis,status,medium,work_type
+G01-001,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G01-002,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,35.5,28,250,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G01-003,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,39.5,50,380,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-004,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,40,30,280,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-005,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-006,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-007,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,45,45,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-008,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-009,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-010,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-011,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-012,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-013,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-014,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,51,450,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-015,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,70,50,500,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-016,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,50,80,580,advertised_asking,listed,mixed media on canvas,two_dimensional
+G01-017,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,76,65,580,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-018,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,61,61,480,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-019,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,61,30,400,advertised_asking,listed,mixed media on canvas,two_dimensional
+G01-020,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,46,92,480,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-021,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,61,76,540,advertised_asking,listed,mixed media on canvas,two_dimensional
+G01-022,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,29,31.5,300,advertised_asking,listed,mixed media on plywood,two_dimensional
+G01-023,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,39,26,300,advertised_asking,listed,mixed media on plywood,two_dimensional
+G01-024,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,37,30.5,300,advertised_asking,listed,mixed media on plywood,two_dimensional
+G01-025,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,30,30,200,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-026,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,30.5,23.5,300,advertised_asking,listed,mixed media on plywood,two_dimensional
+G01-027,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,76,460,advertised_asking,listed,acrylic on canvas,two_dimensional
+G01-028,G01,gallery_primary_or_stockroom,accessible_primary,early_practice_inferred,51,40.5,350,advertised_asking,listed,mixed media on canvas,two_dimensional
+G02-001,G02,gallery_primary_or_stockroom,mixed_primary,unverified,123,123,3200,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G02-002,G02,gallery_primary_or_stockroom,mixed_primary,unverified,123,123,3200,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G02-003,G02,gallery_primary_or_stockroom,mixed_primary,unverified,15,15,5000,advertised_asking,sold_label,oil on copper,two_dimensional
+G02-004,G02,gallery_primary_or_stockroom,mixed_primary,unverified,92,120,2800,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-005,G02,gallery_primary_or_stockroom,mixed_primary,unverified,75,69,4500,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-006,G02,gallery_primary_or_stockroom,mixed_primary,unverified,65,55,3900,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-007,G02,gallery_primary_or_stockroom,mixed_primary,unverified,42,31,1800,advertised_asking,sold_label,acrylic on paper,two_dimensional
+G02-008,G02,gallery_primary_or_stockroom,mixed_primary,unverified,42,29,1700,advertised_asking,sold_label,acrylic on paper,two_dimensional
+G02-009,G02,gallery_primary_or_stockroom,mixed_primary,unverified,91,91,4000,advertised_asking,listed,acrylic on canvas,two_dimensional
+G02-010,G02,gallery_primary_or_stockroom,mixed_primary,unverified,25,20,4250,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-011,G02,gallery_primary_or_stockroom,mixed_primary,unverified,103,104,5000,advertised_asking,sold_label,charcoal on paper,two_dimensional
+G02-012,G02,gallery_primary_or_stockroom,mixed_primary,unverified,94,95,5000,advertised_asking,sold_label,charcoal on paper,two_dimensional
+G02-013,G02,gallery_primary_or_stockroom,mixed_primary,unverified,50,60,2600,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G02-014,G02,gallery_primary_or_stockroom,mixed_primary,unverified,70,65,2400,advertised_asking,sold_label,acrylic on board,two_dimensional
+G02-015,G02,gallery_primary_or_stockroom,mixed_primary,unverified,70,60,2400,advertised_asking,sold_label,acrylic on board,two_dimensional
+G02-016,G02,gallery_primary_or_stockroom,mixed_primary,unverified,30,40,3200,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-017,G02,gallery_primary_or_stockroom,mixed_primary,unverified,25,30,2500,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-018,G02,gallery_primary_or_stockroom,mixed_primary,unverified,30,40,3200,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-019,G02,gallery_primary_or_stockroom,mixed_primary,unverified,25,30,2500,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-020,G02,gallery_primary_or_stockroom,mixed_primary,unverified,30,35,1800,advertised_asking,listed,oil on canvas,two_dimensional
+G02-021,G02,gallery_primary_or_stockroom,mixed_primary,unverified,30,35,1800,advertised_asking,listed,oil on canvas,two_dimensional
+G02-022,G02,gallery_primary_or_stockroom,mixed_primary,unverified,30,35,1700,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-023,G02,gallery_primary_or_stockroom,mixed_primary,unverified,30,35,1700,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-024,G02,gallery_primary_or_stockroom,mixed_primary,unverified,40,40,2500,advertised_asking,sold_label,acrylic on linen,two_dimensional
+G02-025,G02,gallery_primary_or_stockroom,mixed_primary,unverified,40,40,2500,advertised_asking,sold_label,acrylic on linen,two_dimensional
+G02-026,G02,gallery_primary_or_stockroom,mixed_primary,unverified,60,80,3200,advertised_asking,listed,pastel on paper,two_dimensional
+G02-027,G02,gallery_primary_or_stockroom,mixed_primary,unverified,50,40,1800,advertised_asking,listed,acrylic on canvas,two_dimensional
+G02-028,G02,gallery_primary_or_stockroom,mixed_primary,unverified,25,30,1500,advertised_asking,listed,acrylic on board,two_dimensional
+G02-029,G02,gallery_primary_or_stockroom,mixed_primary,unverified,25,19.5,900,advertised_asking,listed,acrylic on board,two_dimensional
+G02-030,G02,gallery_primary_or_stockroom,mixed_primary,unverified,40,30,890,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-031,G02,gallery_primary_or_stockroom,mixed_primary,unverified,40,30,890,advertised_asking,listed,oil on canvas,two_dimensional
+G02-032,G02,gallery_primary_or_stockroom,mixed_primary,unverified,40,30,890,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-033,G02,gallery_primary_or_stockroom,mixed_primary,unverified,45,45,1950,advertised_asking,listed,oil on canvas,two_dimensional
+G02-034,G02,gallery_primary_or_stockroom,mixed_primary,unverified,45,45,1950,advertised_asking,listed,oil on canvas,two_dimensional
+G02-035,G02,gallery_primary_or_stockroom,mixed_primary,unverified,45,45,1950,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-036,G02,gallery_primary_or_stockroom,mixed_primary,unverified,45,45,1950,advertised_asking,sold_label,oil on canvas,two_dimensional
+G02-037,G02,gallery_primary_or_stockroom,mixed_primary,unverified,41,31,2700,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-038,G02,gallery_primary_or_stockroom,mixed_primary,unverified,41,31,2700,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-039,G02,gallery_primary_or_stockroom,mixed_primary,unverified,41,31,2700,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-040,G02,gallery_primary_or_stockroom,mixed_primary,unverified,41,31,2700,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-041,G02,gallery_primary_or_stockroom,mixed_primary,unverified,77,59,2000,advertised_asking,sold_label,acrylic on paper,two_dimensional
+G02-042,G02,gallery_primary_or_stockroom,mixed_primary,unverified,43,33,2300,advertised_asking,sold_label,acrylic and oil pastel on canvas,two_dimensional
+G02-043,G02,gallery_primary_or_stockroom,mixed_primary,unverified,43,33,2300,advertised_asking,sold_label,acrylic and oil pastel on canvas,two_dimensional
+G02-044,G02,gallery_primary_or_stockroom,mixed_primary,unverified,43,33,2300,advertised_asking,sold_label,acrylic and oil pastel on canvas,two_dimensional
+G02-045,G02,gallery_primary_or_stockroom,mixed_primary,unverified,50,60,4000,advertised_asking,sold_label,oil on linen,two_dimensional
+G02-046,G02,gallery_primary_or_stockroom,mixed_primary,unverified,51,51,3300,advertised_asking,listed,acrylic on canvas,two_dimensional
+G02-047,G02,gallery_primary_or_stockroom,mixed_primary,unverified,31,23,850,advertised_asking,listed,oil on canvas,two_dimensional
+G03-001,G03,gallery_primary_or_stockroom,established_stockroom,unverified,140,140,19800,advertised_asking,sold_label,oil on linen,two_dimensional
+G03-002,G03,gallery_primary_or_stockroom,established_stockroom,unverified,60,60,3000,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G03-003,G03,gallery_primary_or_stockroom,established_stockroom,unverified,112,80,9500,advertised_asking,sold_label,drawing on paper,two_dimensional
+G03-004,G03,gallery_primary_or_stockroom,established_stockroom,unverified,60,50,3500,advertised_asking,sold_label,oil on canvas,two_dimensional
+G03-005,G03,gallery_primary_or_stockroom,established_stockroom,unverified,56,76,3300,advertised_asking,listed,acrylic on linen,two_dimensional
+G03-006,G03,gallery_primary_or_stockroom,established_stockroom,unverified,152,213.5,25000,advertised_asking,sold_label,acrylic on canvas,two_dimensional
+G03-007,G03,gallery_primary_or_stockroom,established_stockroom,unverified,92,76,4000,advertised_asking,sold_label,oil on canvas,two_dimensional
+G03-008,G03,gallery_primary_or_stockroom,established_stockroom,unverified,110,122,3800,advertised_asking,sold_label,mixed media on board,two_dimensional
+G03-009,G03,gallery_primary_or_stockroom,established_stockroom,unverified,60,120,2500,advertised_asking,listed,oil on linen,two_dimensional
+G03-010,G03,gallery_primary_or_stockroom,established_stockroom,unverified,45,60,1250,advertised_asking,listed,oil on board,two_dimensional
+G03-011,G03,gallery_primary_or_stockroom,established_stockroom,unverified,40.5,61,1200,advertised_asking,sold_label,oil on canvas,two_dimensional
+G03-012,G03,gallery_primary_or_stockroom,established_stockroom,unverified,14,15,800,advertised_asking,listed,ink on paper,two_dimensional
+G03-013,G03,gallery_primary_or_stockroom,established_stockroom,unverified,15,15,800,advertised_asking,listed,ink on paper,two_dimensional
+G03-014,G03,gallery_primary_or_stockroom,established_stockroom,unverified,20,23,1600,advertised_asking,listed,ink on paper,two_dimensional
+G03-015,G03,gallery_primary_or_stockroom,established_stockroom,unverified,25,39,2250,advertised_asking,listed,ink on paper,two_dimensional
+G03-016,G03,gallery_primary_or_stockroom,established_stockroom,unverified,90,110,2850,advertised_asking,listed,oil and mixed media on canvas,two_dimensional
+G03-017,G03,gallery_primary_or_stockroom,established_stockroom,unverified,110,110,6000,advertised_asking,listed,acrylic on canvas,two_dimensional
+G03-018,G03,gallery_primary_or_stockroom,established_stockroom,unverified,110,110,6000,advertised_asking,listed,acrylic on canvas,two_dimensional
+G03-019,G03,gallery_primary_or_stockroom,established_stockroom,unverified,34,28,1850,advertised_asking,listed,charcoal on paper,two_dimensional
+G04-001,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,259,330,70000,advertised_asking,listed,mixed media on board,two_dimensional
+G04-002,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,100,220,32000,advertised_asking,listed,mixed media on board,two_dimensional
+G04-003,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,130,110,17500,advertised_asking,listed,mixed media on board,two_dimensional
+G04-004,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,130,120,18000,advertised_asking,listed,mixed media on board,two_dimensional
+G04-005,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,140,123.5,14000,advertised_asking,listed,watercolour on paper,two_dimensional
+G04-006,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,121,113,17000,advertised_asking,listed,mixed media on board,two_dimensional
+G04-007,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,198,153,12500,advertised_asking,listed,acrylic and oil on canvas,two_dimensional
+G04-008,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,122,103,7800,advertised_asking,listed,oil on board,two_dimensional
+G04-009,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,144,162,22000,advertised_asking,listed,oil on linen,two_dimensional
+G04-010,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,198,198,29000,advertised_asking,listed,oil on linen,two_dimensional
+G04-011,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,145,145,18900,advertised_asking,listed,oil on linen,two_dimensional
+G04-012,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,180,200,27000,advertised_asking,listed,oil on linen,two_dimensional
+G04-013,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,123,106.5,13500,advertised_asking,listed,oil on linen,two_dimensional
+G04-014,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,152.5,167.5,21000,advertised_asking,listed,oil on canvas,two_dimensional
+G04-015,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,180,180,26000,advertised_asking,listed,oil on canvas,two_dimensional
+G04-016,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,137,122,26000,advertised_asking,listed,oil on linen,two_dimensional
+G04-017,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,137,122,26000,advertised_asking,listed,oil on linen,two_dimensional
+G04-018,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,137.5,122,24000,advertised_asking,listed,oil on linen,two_dimensional
+G04-019,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,122,107,21000,advertised_asking,listed,oil on linen,two_dimensional
+G04-020,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,170,205,110000,advertised_asking,listed,oil on canvas,two_dimensional
+G04-021,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,170,125,70000,advertised_asking,listed,oil on canvas,two_dimensional
+G04-022,G04,gallery_primary_or_stockroom,high_end_stockroom,unverified,198,183,70000,advertised_asking,listed,oil on linen,two_dimensional
